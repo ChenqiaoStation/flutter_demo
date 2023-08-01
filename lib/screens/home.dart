@@ -1,15 +1,14 @@
-import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/screens/player.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
-  final FijkPlayer player = FijkPlayer();
   @override
   State<StatefulWidget> createState() => HomeState();
 }
 
 class HomeState extends State<HomePage> {
-  final FijkPlayer player = new FijkPlayer();
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -18,23 +17,60 @@ class HomeState extends State<HomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text('Hello flutter.'),
       ),
-      body: Container(child: FijkView(player: player)),
+      body: IndexedStack(
+        index: index,
+        children: [PlayerPage()],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: _items(),
+        selectedItemColor: Colors.brown[600],
+        unselectedItemColor: Colors.black45,
+        showUnselectedLabels: true,
+        currentIndex: index,
+        enableFeedback: false,
+        selectedFontSize: 12,
+        unselectedFontSize: 12,
+        elevation: 1,
+        type: BottomNavigationBarType.fixed,
+        onTap: (value) {
+          setState(() {
+            index = value;
+          });
+        },
+      ),
     );
+  }
+
+  List<BottomNavigationBarItem> _items() {
+    return [
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.public),
+        label: '首页',
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.devices_fold),
+        label: '发现',
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.interests),
+        label: '社区',
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.fingerprint),
+        label: '我的',
+      ),
+    ];
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    player.setDataSource(
-        "https://newcntv.qcloudcdn.com/asp/hls/main/0303000a/3/default/5e52dfa3ed7e40acafdd5ea0b66b0625/main.m3u8?maxbr=2048",
-        autoPlay: true);
   }
 
   @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
-    player.release();
   }
 }
