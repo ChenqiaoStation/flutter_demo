@@ -1,65 +1,98 @@
+import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/screens/player.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
+  final FijkPlayer player = FijkPlayer();
   @override
   State<StatefulWidget> createState() => HomeState();
 }
 
 class HomeState extends State<HomePage> {
-  int index = 0;
+  double width = 0;
+  double height = 0;
+  int currentIndex = 0;
+
+  final CarouselController swiper = CarouselController();
 
   @override
   Widget build(BuildContext context) {
+    width = MediaQuery.of(context).size.width;
+    height = width / 3;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Hello flutter.'),
+        body: Container(
+      height: height,
+      child: Stack(
+        children: [
+          Container(
+            child: Column(
+              children: [
+                CarouselSlider(
+                  carouselController: swiper,
+                  items: [1, 2, 3, 4, 5].map((it) {
+                    return Builder(builder: (context) {
+                      return Container(
+                        width: width,
+                        height: height,
+                        decoration: BoxDecoration(
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              'https://cdn.cctv3.net/net.cctv3.BaijiaJiangtan/Banner${it}.jpg',
+                            ),
+                            fit: BoxFit.cover,
+                          ),
+                          borderRadius: BorderRadius.circular(0),
+                        ),
+                      );
+                    });
+                  }).toList(),
+                  options: CarouselOptions(
+                    height: height,
+                    initialPage: 0,
+                    autoPlay: true,
+                    autoPlayInterval: Duration(milliseconds: 2048),
+                    aspectRatio: height / width,
+                    // 每个 item 的宽度充满屏幕
+                    viewportFraction: 1,
+                    onPageChanged: (index, reason) {
+                      setState(() {
+                        currentIndex = index;
+                      });
+                    },
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            bottom: 2,
+            left: 0,
+            right: 0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [1, 2, 3, 4, 5].map((entry) {
+                return GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    width: 10,
+                    height: 10,
+                    margin:
+                        EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: entry - 1 == currentIndex
+                          ? Colors.amber[700]
+                          : Colors.black54,
+                    ),
+                  ),
+                );
+              }).toList(),
+            ),
+          ),
+        ],
       ),
-      body: IndexedStack(
-        index: index,
-        children: [PlayerPage()],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: _items(),
-        selectedItemColor: Colors.brown[600],
-        unselectedItemColor: Colors.black45,
-        showUnselectedLabels: true,
-        currentIndex: index,
-        enableFeedback: false,
-        selectedFontSize: 12,
-        unselectedFontSize: 12,
-        elevation: 1,
-        type: BottomNavigationBarType.fixed,
-        onTap: (value) {
-          setState(() {
-            index = value;
-          });
-        },
-      ),
-    );
-  }
-
-  List<BottomNavigationBarItem> _items() {
-    return [
-      const BottomNavigationBarItem(
-        icon: Icon(Icons.public),
-        label: '首页',
-      ),
-      const BottomNavigationBarItem(
-        icon: Icon(Icons.devices_fold),
-        label: '发现',
-      ),
-      const BottomNavigationBarItem(
-        icon: Icon(Icons.interests),
-        label: '社区',
-      ),
-      const BottomNavigationBarItem(
-        icon: Icon(Icons.fingerprint),
-        label: '我的',
-      ),
-    ];
+    ));
   }
 
   @override

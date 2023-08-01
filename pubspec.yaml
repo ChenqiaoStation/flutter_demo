@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   # https://fijkplayer.befovy.com/docs/zh/install.html#gsc.tab=0
   fijkplayer: ^0.11.0
+  carousel_slider: ^4.2.1
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
