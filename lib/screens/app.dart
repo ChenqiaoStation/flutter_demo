@@ -13,54 +13,93 @@ class AppState extends State<AppPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text('Hello flutter.'),
-      ),
-      body: IndexedStack(
-        index: index,
-        children: [HomePage(), DemoPage(), DemoPage(), DemoPage()],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: _items(),
-        selectedItemColor: Colors.brown[600],
-        unselectedItemColor: Colors.black45,
-        showUnselectedLabels: true,
-        currentIndex: index,
-        enableFeedback: false,
-        selectedFontSize: 12,
-        unselectedFontSize: 12,
-        elevation: 16,
-        type: BottomNavigationBarType.fixed,
-        onTap: (value) {
-          setState(() {
-            index = value;
-          });
-        },
-      ),
-    );
-  }
-
-  List<BottomNavigationBarItem> _items() {
-    return [
-      const BottomNavigationBarItem(
-        icon: Icon(Icons.public),
-        label: '首页',
-      ),
-      const BottomNavigationBarItem(
-        icon: Icon(Icons.devices_fold),
-        label: '发现',
-      ),
-      const BottomNavigationBarItem(
-        icon: Icon(Icons.interests),
-        label: '社区',
-      ),
-      const BottomNavigationBarItem(
-        icon: Icon(Icons.fingerprint),
-        label: '我的',
-      ),
-    ];
+    return DefaultTabController(
+        length: 4,
+        child: Scaffold(
+            appBar: AppBar(
+              elevation: 16,
+              title: Text(
+                'Hello flutter.',
+                style: TextStyle(color: Colors.white),
+              ),
+              leading: IconButton(
+                icon: Icon(Icons.menu),
+                color: Colors.white,
+                onPressed: () => {},
+              ),
+              actions: [
+                IconButton(
+                  icon: Icon(Icons.search),
+                  color: Colors.white,
+                  onPressed: () => {},
+                ),
+                IconButton(
+                  icon: Icon(Icons.email_outlined),
+                  color: Colors.white,
+                  onPressed: () => {},
+                ),
+              ],
+              flexibleSpace: Container(
+                decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                        colors: [Colors.deepPurple, Colors.redAccent],
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight)),
+              ),
+              bottom: const TabBar(
+                padding: EdgeInsets.all(0),
+                labelColor: Colors.white,
+                indicatorColor: Colors.white,
+                labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                unselectedLabelColor: Colors.white70,
+                unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal),
+                enableFeedback: false,
+                tabs: [
+                  Tab(
+                    icon: Row(
+                      children: [
+                        Icon(Icons.public),
+                        SizedBox(width: 5),
+                        Text('首页', style: TextStyle(fontSize: 16))
+                      ],
+                    ),
+                  ),
+                  Tab(
+                    icon: Row(
+                      children: [
+                        Icon(Icons.devices_fold),
+                        SizedBox(width: 5),
+                        Text('发现', style: TextStyle(fontSize: 16))
+                      ],
+                    ),
+                  ),
+                  Tab(
+                    icon: Row(
+                      children: [
+                        Icon(Icons.interests),
+                        SizedBox(width: 5),
+                        Text('社区', style: TextStyle(fontSize: 16))
+                      ],
+                    ),
+                  ),
+                  Tab(
+                    icon: Row(
+                      children: [
+                        Icon(Icons.fingerprint),
+                        SizedBox(width: 5),
+                        Text('我的', style: TextStyle(fontSize: 16))
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            body: TabBarView(children: [
+              HomePage(),
+              HomePage(),
+              HomePage(),
+              HomePage(),
+            ])));
   }
 
   @override

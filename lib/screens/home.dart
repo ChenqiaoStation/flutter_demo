@@ -38,7 +38,7 @@ class HomeState extends State<HomePage> {
                         decoration: BoxDecoration(
                           image: DecorationImage(
                             image: NetworkImage(
-                              'https://cdn.cctv3.net/net.cctv3.BaijiaJiangtan/Banner${it}.jpg',
+                              'https://cdn.cctv3.net/net.cctv3.BaijiaJiangtan/Banner${it}.jpg?x-oss-process=image/resize,w_${1080}',
                             ),
                             fit: BoxFit.cover,
                           ),
@@ -75,8 +75,8 @@ class HomeState extends State<HomePage> {
                 return GestureDetector(
                   onTap: () {},
                   child: Container(
-                    width: 10,
-                    height: 10,
+                    width: 8,
+                    height: 8,
                     margin:
                         EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
                     decoration: BoxDecoration(
