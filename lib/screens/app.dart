@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/screens/home.dart';
+import 'package:marquee/marquee.dart';
+import 'dart:io' show Platform;
 
 class AppPage extends StatefulWidget {
   AppPage({super.key});
@@ -33,7 +35,7 @@ class MyTab extends StatelessWidget {
 
 class AppState extends State<AppPage> {
   int index = 0;
-
+  bool isSearching = false;
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -41,10 +43,42 @@ class AppState extends State<AppPage> {
         child: Scaffold(
             appBar: AppBar(
               elevation: 16,
-              title: Text(
-                'Hello flutter.',
-                style: TextStyle(color: Colors.white),
-              ),
+              title: isSearching
+                  ? SizedBox(
+                      height: Platform.isAndroid ? 32 : 36,
+                      child: TextField(
+                        autofocus: true,
+                        onSubmitted: (s) {},
+                        textInputAction: TextInputAction.done,
+                        style: TextStyle(fontSize: 14),
+                        maxLines: 1,
+                        textAlignVertical: TextAlignVertical.center,
+                        decoration: InputDecoration(
+                          contentPadding:
+                              EdgeInsets.symmetric(vertical: 0, horizontal: 12),
+                          fillColor: Colors.white,
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderSide:
+                                  BorderSide(width: 1, style: BorderStyle.none),
+                              borderRadius: BorderRadius.circular(16)),
+                        ),
+                      ),
+                    )
+                  : Container(
+                      height: 20,
+                      child: Marquee(
+                        text: '汇集百家学养、追慕大师风范，平如开放胸襟、通往大众桥梁。',
+                        style: TextStyle(color: Colors.white, fontSize: 14),
+                        pauseAfterRound: Duration(seconds: 0),
+                        startPadding: 0,
+                        velocity: 18,
+                        accelerationDuration: Duration(seconds: 0),
+                        accelerationCurve: Curves.linear,
+                        decelerationDuration: Duration(milliseconds: 0),
+                        decelerationCurve: Curves.easeOut,
+                      ),
+                    ),
               leading: IconButton(
                 icon: Icon(Icons.menu),
                 color: Colors.white,
@@ -52,9 +86,16 @@ class AppState extends State<AppPage> {
               ),
               actions: [
                 IconButton(
-                  icon: Icon(Icons.search),
+                  icon: isSearching
+                      ? Icon(Icons.close_outlined)
+                      : Icon(Icons.search),
                   color: Colors.white,
-                  onPressed: () => {},
+                  onPressed: () {
+                    isSearching = !isSearching;
+                    setState(() {
+                      isSearching;
+                    });
+                  },
                 ),
                 IconButton(
                   icon: Icon(Icons.email_outlined),

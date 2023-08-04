@@ -33,7 +33,7 @@ dependencies:
   # https://fijkplayer.befovy.com/docs/zh/install.html#gsc.tab=0
   fijkplayer: ^0.11.0
   carousel_slider: ^4.2.1
-
+  marquee: "2.2.3"
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
