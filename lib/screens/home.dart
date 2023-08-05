@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/weights/item-series-last.dart';
+import 'package:flutter_demo/weights/items-keywords-trend.dart';
 import 'package:flutter_demo/weights/items-serieses-latest.dart';
 import 'package:flutter_demo/weights/items-serieses-shuffle.dart';
 import 'package:flutter_demo/weights/items-teachers-shuffle.dart';
@@ -39,6 +40,11 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
           SizedBox(height: 12),
           Container(
             child: ItemSeriesLastWidget(),
+            padding: EdgeInsets.symmetric(horizontal: 12),
+          ),
+          SizedBox(height: 12),
+          Container(
+            child: ItemsKeywordsTrendWidget(),
             padding: EdgeInsets.symmetric(horizontal: 12),
           ),
           SizedBox(height: 12),
