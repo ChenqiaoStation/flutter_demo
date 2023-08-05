@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_demo/constants/x.dart';
+import 'package:flutter_demo/constants/xUtils.dart';
 
 class ItemsKeywordsTrendWidget extends StatefulWidget {
   ItemsKeywordsTrendWidget({Key? key}) : super(key: key);
@@ -51,7 +51,7 @@ class ItemsKeywordsTrendState extends State<ItemsKeywordsTrendWidget> {
                       ),
                       Text(e,
                           style: TextStyle(
-                              color: X().useRandomColor(), fontSize: 14))
+                              color: xUtils.useRandomColor(), fontSize: 14))
                     ]),
                   ))
               .toList(),

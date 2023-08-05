@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/constants/x.dart';
+import 'package:flutter_demo/constants/xUtils.dart';
 
 class ItemsTeachersShuffleWidget extends StatefulWidget {
   ItemsTeachersShuffleWidget({Key? key}) : super(key: key);
@@ -24,7 +24,7 @@ class ItemsTeachersShuffleState extends State<ItemsTeachersShuffleWidget> {
                       ClipRRect(
                         borderRadius: BorderRadius.circular(32),
                         child: Image.network(
-                          X().useCDN(
+                          xUtils.useCDN(
                               "https://cdn.cctv3.net/net.cctv3.BaijiaJiangtan/Snipaste_2023-06-01_20-54-11.jpg",
                               27),
                           height: 54,

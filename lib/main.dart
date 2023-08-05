@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/screens/app.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
+  await Hive.initFlutter("./");
   runApp(const HelloFlutter());
 }
 

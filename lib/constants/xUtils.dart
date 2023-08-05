@@ -1,12 +1,13 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-class X {
-  useCDN(String url, int width) {
+class xUtils {
+  static useCDN(String url, int width) {
     return '${url}?x-oss-process=image/resize,w_${width * 2}';
   }
 
-  Color useRandomColor() {
+  static Color useRandomColor() {
     Random random = Random();
     return Color.fromARGB(
       255,
@@ -16,7 +17,7 @@ class X {
     );
   }
 
-  usePreviousDay(int days) {
+  static usePreviousDay(int days) {
     DateTime now = DateTime.now();
     DateTime yesterday = now.subtract(Duration(days: days));
     String formattedDate =
@@ -24,7 +25,7 @@ class X {
     return formattedDate;
   }
 
-  useGreyImageFilter() {
+  static useGreyImageFilter() {
     return [
       0.2126,
       0.7152,

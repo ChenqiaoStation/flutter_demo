@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_demo/constants/x.dart';
+import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ItemsSeriesesLatestWidget extends StatefulWidget {
@@ -29,7 +29,7 @@ class ItemsSeriesesLatestState extends State<ItemsSeriesesLatestWidget> {
                     child: Column(
                       children: [
                         Image.network(
-                          X().useCDN(
+                          xUtils.useCDN(
                               'https://cdn.cctv3.net/net.cctv3.BaijiaJiangtan/Snipaste_2023-06-24_13-09-22.jpg',
                               84),
                           height: 100.w,

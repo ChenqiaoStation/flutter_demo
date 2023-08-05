@@ -2,8 +2,10 @@ import 'dart:math';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/constants/x.dart';
+import 'package:flutter_demo/constants/Caches.dart';
+import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class MyDrawerWidget extends StatefulWidget {
   MyDrawerWidget({Key? key}) : super(key: key);
@@ -27,7 +29,7 @@ class MyDrawerState extends State<MyDrawerWidget> {
           currentAccountPicture: ClipRRect(
               borderRadius: BorderRadius.circular(36.w),
               child: Image.network(
-                X().useCDN(
+                xUtils.useCDN(
                     "https://cdn.cctv3.net/net.cctv3.BaijiaJiangtan/i.jpg",
                     128),
                 width: 72.w,
@@ -46,13 +48,20 @@ class MyDrawerState extends State<MyDrawerWidget> {
   }
 
   loadBingPicture() async {
-    var result = await Dio().get(
-        'https://mouday.github.io/wallpaper-database/${X().usePreviousDay(1)}.json');
+    String today = xUtils.usePreviousDay(1);
+    var userWallpaper = await Caches.get("userWallpaper:${today}");
+    if (userWallpaper == null) {
+      var result = await Dio().get(
+          'https://mouday.github.io/wallpaper-database/${xUtils.usePreviousDay(1)}.json');
 
-    bingSpider = result.data;
+      bingSpider = result.data;
+      Caches.set("userWallpaper:${today}", result.data);
+    } else {
+      bingSpider = userWallpaper;
+    }
     setState(() {});
   }
-
+  
   @override
   void initState() {
     // TODO: implement initState
