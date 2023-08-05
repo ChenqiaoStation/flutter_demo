@@ -1,8 +1,4 @@
-import 'dart:developer';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
 
 class ItemsKeywordsTrendWidget extends StatefulWidget {

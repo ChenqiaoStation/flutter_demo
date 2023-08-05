@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/constants/xUtils.dart';
 
 class MySwiperWidget extends StatefulWidget {
   final List<String> datas;

@@ -1,11 +1,8 @@
-import 'dart:math';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/Caches.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class MyDrawerWidget extends StatefulWidget {
   MyDrawerWidget({Key? key}) : super(key: key);
@@ -21,7 +18,7 @@ class MyDrawerState extends State<MyDrawerWidget> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Drawer(
-      child: ListView(children: [
+      child: ListView(padding: EdgeInsets.zero, children: [
         UserAccountsDrawerHeader(
           margin: EdgeInsets.zero,
           accountName: Text('鹏鹏要赚一百万鸭'),
@@ -43,6 +40,42 @@ class MyDrawerState extends State<MyDrawerWidget> {
                       fit: BoxFit.cover,
                       image: NetworkImage(bingSpider['image_url']))),
         ),
+        ListTile(
+          title: Text('账号设置'),
+          leading: Icon(Icons.fingerprint),
+          onTap: () {},
+        ),
+        ListTile(
+          title: Text('意见反馈'),
+          leading: Icon(Icons.bug_report),
+          onTap: () {},
+        ),
+        ListTile(
+          title: Text('关于我们'),
+          leading: Icon(Icons.highlight_alt),
+          onTap: () {},
+        ),
+        ListTile(
+          title: Text('版本升级'),
+          leading: Icon(Icons.rocket_launch),
+          onTap: () {},
+        ),
+        ListTile(
+          title: Text('系统设置'),
+          leading: Icon(Icons.settings_suggest),
+          onTap: () {},
+        ),
+        ListTile(
+          title: Text(
+            '退出登录',
+            style: TextStyle(color: Colors.grey),
+          ),
+          leading: Icon(
+            Icons.logout,
+            color: Colors.grey,
+          ),
+          onTap: () {},
+        ),
       ]),
     );
   }
@@ -61,7 +94,7 @@ class MyDrawerState extends State<MyDrawerWidget> {
     }
     setState(() {});
   }
-  
+
   @override
   void initState() {
     // TODO: implement initState
