@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_demo/constants/x.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ItemsSeriesesShuffleWidget extends StatefulWidget {
   ItemsSeriesesShuffleWidget({Key? key}) : super(key: key);
@@ -13,12 +14,10 @@ class ItemsSeriesesShuffleState extends State<ItemsSeriesesShuffleWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return PhysicalModel(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        elevation: 1,
-        child: Container(
-            child: ListView(
+    return Container(
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(12)),
+        child: ListView(
           physics: NeverScrollableScrollPhysics(),
           scrollDirection: Axis.vertical,
           shrinkWrap: true,
@@ -26,15 +25,15 @@ class ItemsSeriesesShuffleState extends State<ItemsSeriesesShuffleWidget> {
               .map((e) => Container(
                   margin: EdgeInsets.symmetric(vertical: 5, horizontal: 12),
                   child: Container(
-                      height: 100,
+                      height: 100.w,
                       child: Row(
                         children: [
                           Image.network(
                             X().useCDN(
                                 'https://cdn.cctv3.net/net.cctv3.BaijiaJiangtan/Snipaste_2023-06-24_13-09-22.jpg',
                                 84),
-                            height: 100,
-                            width: 75,
+                            height: 100.w,
+                            width: 75.w,
                           ),
                           SizedBox(
                             width: 12,
@@ -100,6 +99,6 @@ class ItemsSeriesesShuffleState extends State<ItemsSeriesesShuffleWidget> {
                         ],
                       ))))
               .toList(),
-        )));
+        ));
   }
 }

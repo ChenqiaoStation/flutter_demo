@@ -12,12 +12,10 @@ class ItemsTeachersShuffleState extends State<ItemsTeachersShuffleWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return PhysicalModel(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        elevation: 1,
-        child: Container(
-            child: Wrap(
+    return Container(
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(12)),
+        child: Wrap(
           children: datas
               .map((e) => Container(
                     margin: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
@@ -48,6 +46,6 @@ class ItemsTeachersShuffleState extends State<ItemsTeachersShuffleWidget> {
                     width: 72,
                   ))
               .toList(),
-        )));
+        ));
   }
 }

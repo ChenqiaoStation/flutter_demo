@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/constants/x.dart';
 
 class MySwiperWidget extends StatefulWidget {
   final List<String> datas;
@@ -20,11 +21,10 @@ class MySwiperWidgetState extends State<MySwiperWidget> {
 
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery.of(context).size.width;
+    width = MediaQuery.of(context).size.width - 24;
     height = width / 3;
 
-    return Scaffold(
-        body: Container(
+    return Container(
       height: height,
       child: Stack(
         children: [
@@ -40,18 +40,14 @@ class MySwiperWidgetState extends State<MySwiperWidget> {
                             widget.onItemPress(it);
                           },
                           child: Container(
-                            width: width,
-                            height: height,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                  'https://cdn.cctv3.net/net.cctv3.BaijiaJiangtan/Banner${it}.jpg?x-oss-process=image/resize,w_${1080}',
-                                ),
-                                fit: BoxFit.cover,
-                              ),
-                              borderRadius: BorderRadius.circular(0),
-                            ),
-                          ));
+                              child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Image.network(
+                                    'https://cdn.cctv3.net/net.cctv3.BaijiaJiangtan/iShenZhen0${it}.jpg?x-oss-process=image/resize,w_${750}',
+                                    width: width,
+                                    height: height,
+                                    fit: BoxFit.cover,
+                                  ))));
                     });
                   }).toList(),
                   options: CarouselOptions(
@@ -99,7 +95,7 @@ class MySwiperWidgetState extends State<MySwiperWidget> {
           ),
         ],
       ),
-    ));
+    );
   }
 
   @override

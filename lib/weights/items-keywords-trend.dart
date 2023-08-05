@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -35,28 +36,25 @@ class ItemsKeywordsTrendState extends State<ItemsKeywordsTrendWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return PhysicalModel(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        elevation: 1,
-        child: Container(
-            padding: EdgeInsets.symmetric(vertical: 12, horizontal: 6),
-            child: Wrap(
-              children: datas
-                  .map((e) => Container(
-                        margin:
-                            EdgeInsets.symmetric(vertical: 2, horizontal: 6),
-                        child: Row(mainAxisSize: MainAxisSize.min, children: [
-                          Icon(Icons.lens_blur, size: 16),
-                          SizedBox(
-                            width: 4,
-                          ),
-                          Text(e,
-                              style: TextStyle(
-                                  color: X().useRandomColor(), fontSize: 14))
-                        ]),
-                      ))
-                  .toList(),
-            )));
+    return Container(
+        decoration: BoxDecoration(
+            color: Colors.white, borderRadius: BorderRadius.circular(12)),
+        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 6),
+        child: Wrap(
+          children: datas
+              .map((e) => Container(
+                    margin: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+                    child: Row(mainAxisSize: MainAxisSize.min, children: [
+                      Icon(Icons.lens_blur, size: 16),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Text(e,
+                          style: TextStyle(
+                              color: X().useRandomColor(), fontSize: 14))
+                    ]),
+                  ))
+              .toList(),
+        ));
   }
 }

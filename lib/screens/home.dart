@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/weights/item-series-last.dart';
 import 'package:flutter_demo/weights/items-keywords-trend.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_demo/weights/my-swiper.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
-  final FijkPlayer player = FijkPlayer();
   @override
   State<StatefulWidget> createState() => HomeState();
 }
@@ -32,10 +30,11 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
         backgroundColor: Color(0xfff5f7f9),
         resizeToAvoidBottomInset: true,
         body: ListView(addAutomaticKeepAlives: false, children: [
-          SizedBox(
-              height: height,
+          SizedBox(height: 12),
+          Container(
+              padding: EdgeInsets.symmetric(horizontal: 12),
               child: MySwiperWidget(
-                  datas: ['1', '2', '3', '4', '5'],
+                  datas: List.generate(4, (index) => '${index + 1}'),
                   onItemPress: onSwiperPress)),
           SizedBox(height: 12),
           Container(
