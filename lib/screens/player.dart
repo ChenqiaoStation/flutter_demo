@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:fijkplayer/fijkplayer.dart';
 import 'package:flutter/material.dart';
 
@@ -8,13 +10,37 @@ class PlayerPage extends StatefulWidget {
   State<StatefulWidget> createState() => PlayerState();
 }
 
-class PlayerState extends State<PlayerPage> {
+class PlayerState extends State<PlayerPage> with TickerProviderStateMixin {
   final FijkPlayer player = new FijkPlayer();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(child: FijkView(player: player)),
+      appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          title: null,
+          centerTitle: true,
+          leading: IconButton(
+              icon: Icon(
+                Icons.arrow_back,
+                color: Colors.white,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              })),
+      extendBodyBehindAppBar: true,
+      body: Expanded(
+          child: ListView(
+        padding: EdgeInsets.only(top: 0),
+        children: [
+          FijkView(
+            player: player,
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.width * 9 / 16,
+            color: Colors.black,
+          ),
+        ],
+      )),
     );
   }
 

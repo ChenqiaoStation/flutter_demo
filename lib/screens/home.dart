@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/screens/player.dart';
 import 'package:flutter_demo/weights/item-series-last.dart';
 import 'package:flutter_demo/weights/items-keywords-trend.dart';
 import 'package:flutter_demo/weights/items-serieses-latest.dart';
@@ -38,7 +39,10 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
                   onItemPress: onSwiperPress)),
           SizedBox(height: 12),
           Container(
-            child: ItemSeriesLastWidget(),
+            child: ItemSeriesLastWidget(onItemPress: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => PlayerPage()));
+            }),
             padding: EdgeInsets.symmetric(horizontal: 12),
           ),
           SizedBox(height: 12),

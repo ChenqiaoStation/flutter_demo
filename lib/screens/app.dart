@@ -110,7 +110,7 @@ class AppState extends State<AppPage> {
           flexibleSpace: Container(
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                    colors: [Colors.orangeAccent, Colors.redAccent],
+                    colors: [Colors.blueAccent, Colors.lightBlueAccent],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight)),
           ),
@@ -143,8 +143,8 @@ class AppState extends State<AppPage> {
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: _items(),
-          selectedItemColor: Colors.deepOrangeAccent,
-          unselectedItemColor: Colors.black45,
+          selectedItemColor: Colors.blueAccent,
+          unselectedItemColor: Colors.grey,
           showUnselectedLabels: true,
           currentIndex: index,
           enableFeedback: false,
@@ -173,6 +173,10 @@ class AppState extends State<AppPage> {
       const BottomNavigationBarItem(
         icon: Icon(Icons.interests),
         label: '社区',
+      ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.cloud_sync),
+        label: '同步',
       ),
       // const BottomNavigationBarItem(
       //   icon: Icon(Icons.fingerprint),
