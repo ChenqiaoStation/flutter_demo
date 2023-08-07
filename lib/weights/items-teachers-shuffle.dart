@@ -16,6 +16,7 @@ class ItemsTeachersShuffleState extends State<ItemsTeachersShuffleWidget> {
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(12)),
         child: Wrap(
+          alignment: WrapAlignment.spaceBetween,
           children: datas
               .map((e) => Container(
                     margin: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
@@ -27,8 +28,8 @@ class ItemsTeachersShuffleState extends State<ItemsTeachersShuffleWidget> {
                           xUtils.useCDN(
                               "https://cdn.cctv3.net/net.cctv3.BaijiaJiangtan/Snipaste_2023-06-01_20-54-11.jpg",
                               27),
-                          height: 54,
-                          width: 54,
+                          height: 54.w,
+                          width: 54.w,
                         ),
                       ),
                       Text(
@@ -43,7 +44,7 @@ class ItemsTeachersShuffleState extends State<ItemsTeachersShuffleWidget> {
                         style: TextStyle(fontSize: 10, color: Colors.black87),
                       )
                     ])),
-                    width: 72,
+                    width: (MediaQuery.of(context).size.width - 24) / 5,
                   ))
               .toList(),
         ));

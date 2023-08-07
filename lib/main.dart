@@ -7,12 +7,12 @@ import 'package:bot_toast/bot_toast.dart';
 void main() async {
   await ScreenUtil.ensureScreenSize();
   await Hive.initFlutter("./");
-  runApp(const HelloFlutter());
+  runApp(HelloFlutter());
 }
 
 class HelloFlutter extends StatelessWidget {
-  const HelloFlutter({super.key});
-
+  HelloFlutter({super.key});
+  final botToastBuilder = BotToastInit();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,19 @@ class HelloFlutter extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       /** BotToast */
-      builder: BotToastInit(),
+      builder: (BuildContext context, Widget? child) {
+        final MediaQueryData data = MediaQuery.of(context);
+        Widget newWidget = Container();
+        if (child == null) {
+        } else {
+          newWidget = MediaQuery(
+            data: data.copyWith(textScaleFactor: 1.0),
+            child: child,
+          );
+          newWidget = botToastBuilder(context, newWidget);
+        }
+        return newWidget;
+      },
       navigatorObservers: [BotToastNavigatorObserver()],
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
