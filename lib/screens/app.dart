@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/screens/community.dart';
 import 'package:flutter_demo/screens/demo.dart';
 import 'package:flutter_demo/screens/home.dart';
+import 'package:flutter_demo/screens/my.dart';
 import 'package:flutter_demo/screens/serieses.dart';
 import 'package:flutter_demo/weights/my-drawer.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -139,7 +140,13 @@ class AppState extends State<AppPage> {
         drawer: MyDrawerWidget(),
         body: IndexedStack(
           index: index,
-          children: [HomePage(), SeriesesPage(), CommunityPage(), DemoPage()],
+          children: [
+            HomePage(),
+            SeriesesPage(),
+            CommunityPage(),
+            DemoPage(),
+            MyPage()
+          ],
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: _items(),
@@ -178,10 +185,10 @@ class AppState extends State<AppPage> {
         icon: Icon(Icons.cloud_sync),
         label: '同步',
       ),
-      // const BottomNavigationBarItem(
-      //   icon: Icon(Icons.fingerprint),
-      //   label: '我的',
-      // ),
+      const BottomNavigationBarItem(
+        icon: Icon(Icons.fingerprint),
+        label: '我的',
+      ),
     ];
   }
 

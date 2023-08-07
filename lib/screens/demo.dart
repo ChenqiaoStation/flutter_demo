@@ -13,8 +13,8 @@ class DemoState extends State<DemoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-          child: const Center(
-        child: Text('Demo page.'),
+          child: ListView(
+        children: [],
       )),
     );
   }

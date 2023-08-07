@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/screens/app.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:bot_toast/bot_toast.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
@@ -19,6 +20,9 @@ class HelloFlutter extends StatelessWidget {
     ScreenUtil.init(context, designSize: const Size(375, 667));
     return MaterialApp(
       title: 'Flutter Demo',
+      /** BotToast */
+      builder: BotToastInit(),
+      navigatorObservers: [BotToastNavigatorObserver()],
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,

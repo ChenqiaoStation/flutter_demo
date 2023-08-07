@@ -1,3 +1,4 @@
+import 'package:bot_toast/bot_toast.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/Caches.dart';
@@ -43,7 +44,9 @@ class MyDrawerState extends State<MyDrawerWidget> {
         ListTile(
           title: Text('账号设置'),
           leading: Icon(Icons.fingerprint),
-          onTap: () {},
+          onTap: () {
+            xUtils.useToast("HelloWorld.");
+          },
         ),
         ListTile(
           title: Text('意见反馈'),

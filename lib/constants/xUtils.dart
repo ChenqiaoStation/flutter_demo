@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -48,5 +49,12 @@ class xUtils {
       1,
       0,
     ];
+  }
+
+  static useToast(String text) {
+    BotToast.showText(
+        text: text,
+        animationDuration: Duration(milliseconds: 618),
+        textStyle: TextStyle(fontSize: 16, color: Colors.white));
   }
 }
