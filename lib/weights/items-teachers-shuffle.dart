@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ItemsTeachersShuffleWidget extends StatefulWidget {
   ItemsTeachersShuffleWidget({Key? key}) : super(key: key);

@@ -185,10 +185,10 @@ class AppState extends State<AppPage> {
         icon: Icon(Icons.cloud_sync),
         label: '同步',
       ),
-      const BottomNavigationBarItem(
-        icon: Icon(Icons.fingerprint),
-        label: '我的',
-      ),
+      // const BottomNavigationBarItem(
+      //   icon: Icon(Icons.fingerprint),
+      //   label: '我的',
+      // ),
     ];
   }
 

@@ -52,11 +52,6 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
           ),
           SizedBox(height: 12),
           Container(
-            child: ItemsTeachersShuffleWidget(),
-            padding: EdgeInsets.symmetric(horizontal: 12),
-          ),
-          SizedBox(height: 12),
-          Container(
             child: ItemsSeriesesLatestWidget(),
             padding: EdgeInsets.symmetric(horizontal: 12),
           ),
