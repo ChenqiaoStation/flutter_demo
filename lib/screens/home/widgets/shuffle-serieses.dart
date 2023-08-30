@@ -84,13 +84,13 @@ class ShuffleSeriesesState extends State<ShuffleSerieses> {
                                             Icon(
                                               Icons.timer,
                                               size: 16,
-                                              color: Colors.black54,
+                                              color: Colors.grey,
                                             ),
                                             Text(
                                               '两天前更新',
                                               style: TextStyle(
-                                                  color: Colors.black54,
-                                                  fontSize: 12),
+                                                  color: Colors.grey,
+                                                  fontSize: 12.sp),
                                             )
                                           ],
                                         )

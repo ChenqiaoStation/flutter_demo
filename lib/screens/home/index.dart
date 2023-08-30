@@ -8,6 +8,7 @@ import 'package:flutter_demo/screens/home/widgets/shuffle-teachers.dart';
 import 'package:flutter_demo/screens/home/widgets/trend-keywords.dart';
 import 'package:flutter_demo/screens/player.dart';
 import 'package:flutter_demo/weights/my-swiper.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marquee/marquee.dart';
 
 class HomePage extends StatefulWidget {
@@ -21,7 +22,6 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   double height = 0;
   int currentIndex = 0;
   bool isSearching = false;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final CarouselController swiper = CarouselController();
 
@@ -35,7 +35,7 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
           elevation: 16,
           title: isSearching
               ? SizedBox(
-                  height: Platform.isAndroid ? 32 : 36,
+                  height: Platform.isAndroid ? 32.sp : 36.sp,
                   child: TextField(
                     autofocus: true,
                     onSubmitted: (s) {},
@@ -45,13 +45,13 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
                     textAlignVertical: TextAlignVertical.center,
                     decoration: InputDecoration(
                       contentPadding:
-                          EdgeInsets.symmetric(vertical: 0, horizontal: 12),
+                          EdgeInsets.symmetric(vertical: 0, horizontal: 18),
                       fillColor: Colors.white,
                       filled: true,
                       border: OutlineInputBorder(
                           borderSide:
                               BorderSide(width: 1, style: BorderStyle.none),
-                          borderRadius: BorderRadius.circular(16)),
+                          borderRadius: BorderRadius.circular(16.sp)),
                     ),
                   ),
                 )
@@ -59,7 +59,7 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
                   height: 20,
                   child: Marquee(
                     text: '汇集百家学养、追慕大师风范，平如开放胸襟、通往大众桥梁。',
-                    style: TextStyle(color: Colors.white, fontSize: 14),
+                    style: TextStyle(color: Colors.white, fontSize: 14.sp),
                     pauseAfterRound: Duration(seconds: 0),
                     startPadding: 0,
                     velocity: 18,
@@ -69,10 +69,6 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
                     decelerationCurve: Curves.easeOut,
                   ),
                 ),
-          leading: IconButton(
-              icon: Icon(Icons.menu),
-              color: Colors.white,
-              onPressed: () => scaffoldKey.currentState?.openDrawer()),
           actions: [
             IconButton(
               icon:
@@ -92,11 +88,11 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
             ),
           ],
           flexibleSpace: Container(
-            decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                    colors: [Colors.blueAccent, Colors.lightBlueAccent],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight)),
+            decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+              Theme.of(context).primaryColor,
+              Theme.of(context).primaryColor.withOpacity(0.618)
+            ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
           ),
           // bottom: TabBar(
           //   padding: EdgeInsets.all(0),

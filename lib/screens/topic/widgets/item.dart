@@ -41,9 +41,9 @@ class ItemTopicState extends State<TopicItem> {
                   Text(
                     "陈桥驿站",
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w500),
+                      color: Colors.black,
+                      fontSize: 14.sp,
+                    ),
                   ),
                   // SizedBox(width: 4),
                   // Text(

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/screens/community/index.dart';
-import 'package:flutter_demo/screens/demo.dart';
 import 'package:flutter_demo/screens/home/index.dart';
-import 'package:flutter_demo/screens/my.dart';
+import 'package:flutter_demo/screens/my/index.dart';
 import 'package:flutter_demo/screens/serieses/index.dart';
-import 'package:flutter_demo/weights/my-drawer.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppPage extends StatefulWidget {
   AppPage({super.key});
@@ -41,32 +40,18 @@ class AppState extends State<AppPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // body: TabBarView(children: [
-        //   HomePage(),
-        //   SeriesesPage(),
-        //   CommunityPage(),
-        //   HomePage(),
-        // ])
-        drawer: MyDrawerWidget(),
         body: IndexedStack(
           index: index,
-          children: [
-            HomePage(),
-            SeriesesPage(),
-            CommunityPage(),
-            DemoPage(),
-            MyPage()
-          ],
+          children: [HomePage(), SeriesesPage(), CommunityPage(), MyPage()],
         ),
         bottomNavigationBar: BottomNavigationBar(
           items: _items(),
           // selectedItemColor: Colors.blueAccent,
-          unselectedItemColor: Colors.grey,
           showUnselectedLabels: true,
           currentIndex: index,
           enableFeedback: false,
-          selectedFontSize: 12,
-          unselectedFontSize: 12,
+          selectedFontSize: 12.sp,
+          unselectedFontSize: 12.sp,
           elevation: 16,
           type: BottomNavigationBarType.fixed,
           onTap: (value) {
@@ -91,10 +76,6 @@ class AppState extends State<AppPage> {
         icon: Icon(Icons.interests),
         label: '社区',
       ),
-      // const BottomNavigationBarItem(
-      //   icon: Icon(Icons.cloud_sync),
-      //   label: '同步',
-      // ),
       const BottomNavigationBarItem(
         icon: Icon(Icons.fingerprint),
         label: '我的',

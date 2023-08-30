@@ -70,6 +70,9 @@ class SeriesItem extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             fontSize: 16.sp),
                       ),
+                      SizedBox(
+                        height: 4,
+                      ),
                       Text(
                         item['message'] as String,
                         maxLines: 2,
@@ -88,11 +91,11 @@ class SeriesItem extends StatelessWidget {
                           children: [
                             ClipRRect(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(16.w)),
+                                  BorderRadius.all(Radius.circular(14.w)),
                               child: Image.network(
                                 'https://cdn.cctv3.net/net.cctv3.typecho/i.jpg',
-                                height: 32.w,
-                                width: 32.w,
+                                height: 28.w,
+                                width: 28.w,
                               ),
                             ),
                             SizedBox(
