@@ -46,7 +46,6 @@ class CommunityState extends State<CommunityPage>
         )),
         body: Column(
           children: [
-            SizedBox(height: 6),
             Expanded(
                 child: IndexedStack(
               children: [

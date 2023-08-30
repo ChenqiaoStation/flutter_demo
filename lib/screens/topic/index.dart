@@ -17,11 +17,19 @@ class TopicState extends State<TopicPage> with AutomaticKeepAliveClientMixin {
         backgroundColor: Colors.grey[100],
         body: ListView(addAutomaticKeepAlives: false, children: [
           Column(
-            children: list
-                .map((e) => TopicItem(
-                      onItemPress: onItemPress,
-                    ))
-                .toList(),
+            children: [
+              const SizedBox(
+                height: 6,
+              ),
+              ...list
+                  .map((e) => TopicItem(
+                        onItemPress: onItemPress,
+                      ))
+                  .toList(),
+              const SizedBox(
+                height: 6,
+              ),
+            ],
           )
         ]));
   }

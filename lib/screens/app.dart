@@ -40,26 +40,33 @@ class AppState extends State<AppPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: IndexedStack(
-          index: index,
-          children: [HomePage(), SeriesesPage(), CommunityPage(), MyPage()],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          items: _items(),
-          // selectedItemColor: Colors.blueAccent,
-          showUnselectedLabels: true,
-          currentIndex: index,
-          enableFeedback: false,
-          selectedFontSize: 12.sp,
-          unselectedFontSize: 12.sp,
-          elevation: 16,
-          type: BottomNavigationBarType.fixed,
-          onTap: (value) {
-            setState(() {
-              index = value;
-            });
-          },
-        ));
+      body: IndexedStack(
+        index: index,
+        children: [HomePage(), SeriesesPage(), CommunityPage(), MyPage()],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: _items(),
+        // selectedItemColor: Colors.blueAccent,
+        showUnselectedLabels: true,
+        currentIndex: index,
+        enableFeedback: false,
+        selectedFontSize: 12.sp,
+        unselectedFontSize: 12.sp,
+        elevation: 16,
+        type: BottomNavigationBarType.fixed,
+        onTap: (value) {
+          setState(() {
+            index = value;
+          });
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          
+        },
+        child: Icon(Icons.bug_report_outlined),
+      ),
+    );
   }
 
   List<BottomNavigationBarItem> _items() {

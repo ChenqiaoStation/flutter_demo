@@ -17,11 +17,19 @@ class SocialState extends State<SocialPage> with AutomaticKeepAliveClientMixin {
         backgroundColor: Colors.grey[100],
         body: ListView(addAutomaticKeepAlives: false, children: [
           Column(
-            children: list
-                .map((e) => SocialItem(
-                      onItemPress: onItemPress,
-                    ))
-                .toList(),
+            children: [
+              const SizedBox(
+                height: 6,
+              ),
+              ...list
+                  .map((e) => SocialItem(
+                        onItemPress: onItemPress,
+                      ))
+                  .toList(),
+              const SizedBox(
+                height: 6,
+              ),
+            ],
           )
         ]));
   }

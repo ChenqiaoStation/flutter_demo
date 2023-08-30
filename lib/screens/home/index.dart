@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/constants/AESUtils.dart';
 import 'package:flutter_demo/screens/home/widgets/last-series.dart';
 import 'package:flutter_demo/screens/home/widgets/shuffle-serieses.dart';
 import 'package:flutter_demo/screens/home/widgets/shuffle-teachers.dart';
@@ -84,7 +85,10 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
             IconButton(
               icon: Icon(Icons.email_outlined),
               color: Colors.white,
-              onPressed: () => {},
+              onPressed: () {
+                String base64 = new AesUtils().toBase64("HelloWorld.");
+                String primary = new AesUtils().fromBase64(base64);
+              },
             ),
           ],
           flexibleSpace: Container(
