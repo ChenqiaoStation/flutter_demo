@@ -1,17 +1,17 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class MySwiperWidget extends StatefulWidget {
+class MySwiper extends StatefulWidget {
   final List<String> datas;
   final onItemPress;
-  MySwiperWidget({Key? key, required this.datas, required this.onItemPress})
+  MySwiper({Key? key, required this.datas, required this.onItemPress})
       : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => MySwiperWidgetState();
+  State<StatefulWidget> createState() => MySwiperState();
 }
 
-class MySwiperWidgetState extends State<MySwiperWidget> {
+class MySwiperState extends State<MySwiper> {
   double width = 0;
   double height = 0;
   int currentIndex = 0;

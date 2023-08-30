@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
+import 'package:flutter_demo/weights/common-card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LastSeries extends StatefulWidget {
@@ -13,10 +14,8 @@ class LastSeries extends StatefulWidget {
 class LastSeriesState extends State<LastSeries> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(8),
-      decoration: BoxDecoration(
-          color: Colors.white, borderRadius: BorderRadius.circular(12)),
+    return CommonCard(
+      title: '最近更新',
       child: Container(
           height: 100.w,
           child: GestureDetector(

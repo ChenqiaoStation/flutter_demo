@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
+import 'package:flutter_demo/weights/common-card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TrendKeywords extends StatefulWidget {
@@ -30,28 +31,27 @@ class TrendKeywordsState extends State<TrendKeywords> {
     "强连通分量",
     "双连通分量"
   ];
-  
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-            color: Colors.white, borderRadius: BorderRadius.circular(12)),
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 6),
-        child: Wrap(
-          children: datas
-              .map((e) => Container(
-                    margin: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
-                    child: Row(mainAxisSize: MainAxisSize.min, children: [
-                      Icon(Icons.lens_blur, size: 16.sp),
-                      SizedBox(
-                        width: 4,
-                      ),
-                      Text(e,
-                          style: TextStyle(
-                              color: xUtils.useRandomColor(), fontSize: 14.sp))
-                    ]),
-                  ))
-              .toList(),
-        ));
+    return CommonCard(
+      title: '热门搜索',
+      child: Wrap(
+        children: datas
+            .map((e) => Container(
+                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+                  child: Row(mainAxisSize: MainAxisSize.min, children: [
+                    Icon(Icons.lens_blur, size: 16.sp),
+                    SizedBox(
+                      width: 4,
+                    ),
+                    Text(e,
+                        style: TextStyle(
+                            color: xUtils.useRandomColor(), fontSize: 14.sp))
+                  ]),
+                ))
+            .toList(),
+      ),
+    );
   }
 }

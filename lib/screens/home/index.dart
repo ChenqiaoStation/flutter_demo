@@ -7,7 +7,7 @@ import 'package:flutter_demo/screens/home/widgets/shuffle-serieses.dart';
 import 'package:flutter_demo/screens/home/widgets/shuffle-teachers.dart';
 import 'package:flutter_demo/screens/home/widgets/trend-keywords.dart';
 import 'package:flutter_demo/screens/player.dart';
-import 'package:flutter_demo/weights/my-swiper.dart';
+import 'package:flutter_demo/screens/home/widgets/my-swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marquee/marquee.dart';
 
@@ -40,12 +40,12 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
                     autofocus: true,
                     onSubmitted: (s) {},
                     textInputAction: TextInputAction.done,
-                    style: TextStyle(fontSize: 14),
+                    style: const TextStyle(fontSize: 14),
                     maxLines: 1,
                     textAlignVertical: TextAlignVertical.center,
                     decoration: InputDecoration(
-                      contentPadding:
-                          EdgeInsets.symmetric(vertical: 0, horizontal: 18),
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 0, horizontal: 18),
                       fillColor: Colors.white,
                       filled: true,
                       border: OutlineInputBorder(
@@ -112,42 +112,31 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
         ),
         backgroundColor: Colors.grey[100],
         resizeToAvoidBottomInset: true,
-        body: ListView(addAutomaticKeepAlives: false, children: [
-          SizedBox(height: 12),
-          Container(
-              padding: EdgeInsets.symmetric(horizontal: 12),
-              child: MySwiperWidget(
+        body: ListView(
+            addAutomaticKeepAlives: false,
+            padding: const EdgeInsets.symmetric(horizontal: 12),
+            children: [
+              const SizedBox(height: 12),
+              MySwiper(
                   datas: List.generate(4, (index) => '${index + 1}'),
-                  onItemPress: onSwiperPress)),
-          SizedBox(height: 12),
-          Container(
-            child: LastSeries(onItemPress: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => PlayerPage()));
-            }),
-            padding: EdgeInsets.symmetric(horizontal: 12),
-          ),
-          SizedBox(height: 12),
-          Container(
-            child: TrendKeywords(),
-            padding: EdgeInsets.symmetric(horizontal: 12),
-          ),
-          SizedBox(height: 12),
-          Container(
-            child: ShuffleTeachers(),
-            padding: EdgeInsets.symmetric(horizontal: 12),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-          Container(
-            child: ShuffleSerieses(),
-            padding: EdgeInsets.symmetric(horizontal: 12),
-          ),
-          SizedBox(
-            height: 12,
-          ),
-        ]));
+                  onItemPress: onSwiperPress),
+              const SizedBox(height: 12),
+              LastSeries(onItemPress: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => PlayerPage()));
+              }),
+              const SizedBox(height: 12),
+              TrendKeywords(),
+              const SizedBox(height: 12),
+              ShuffleTeachers(),
+              const SizedBox(
+                height: 12,
+              ),
+              ShuffleSerieses(),
+              const SizedBox(
+                height: 12,
+              ),
+            ]));
   }
 
   @override
