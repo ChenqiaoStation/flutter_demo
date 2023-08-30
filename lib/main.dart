@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/screens/app.dart';
+import 'package:flutter_demo/themes/theme.g.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:bot_toast/bot_toast.dart';
@@ -35,10 +36,7 @@ class HelloFlutter extends StatelessWidget {
         return newWidget;
       },
       navigatorObservers: [BotToastNavigatorObserver()],
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
       home: AppPage(),
     );
   }

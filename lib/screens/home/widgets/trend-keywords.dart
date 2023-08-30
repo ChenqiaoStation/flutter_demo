@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
 
-class ItemsKeywordsTrendWidget extends StatefulWidget {
-  ItemsKeywordsTrendWidget({Key? key}) : super(key: key);
+class TrendKeywords extends StatefulWidget {
+  TrendKeywords({Key? key}) : super(key: key);
   @override
-  State<StatefulWidget> createState() => ItemsKeywordsTrendState();
+  State<StatefulWidget> createState() => TrendKeywordsState();
 }
 
-class ItemsKeywordsTrendState extends State<ItemsKeywordsTrendWidget> {
+class TrendKeywordsState extends State<TrendKeywords> {
   List<String> datas = [
     "哈希表",
     "树",

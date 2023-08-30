@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ItemSeriesLastWidget extends StatefulWidget {
+class LastSeries extends StatefulWidget {
   final onItemPress;
-  ItemSeriesLastWidget({Key? key, required this.onItemPress}) : super(key: key);
+  LastSeries({Key? key, required this.onItemPress}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => ItemSeriesLastState();
+  State<StatefulWidget> createState() => LastSeriesState();
 }
 
-class ItemSeriesLastState extends State<ItemSeriesLastWidget> {
+class LastSeriesState extends State<LastSeries> {
   @override
   Widget build(BuildContext context) {
     return Container(

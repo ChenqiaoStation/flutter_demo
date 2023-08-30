@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/screens/social.dart';
-import 'package:flutter_demo/screens/topic.dart';
+import 'package:flutter_demo/screens/social/index.dart';
+import 'package:flutter_demo/screens/topic/index.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CommunityPage extends StatefulWidget {
   CommunityPage({super.key});
@@ -18,33 +19,33 @@ class CommunityState extends State<CommunityPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xfff5f7f9),
+        backgroundColor: Colors.grey[100],
+        appBar: AppBar(
+            title: Center(
+          child: CupertinoSlidingSegmentedControl(
+              children: {
+                0: Text(
+                  '话题广场',
+                  style: TextStyle(
+                      fontSize: 16.sp,
+                      color: slide == 0 ? Colors.black : Colors.grey),
+                ),
+                1: Text(
+                  '我的圈子',
+                  style: TextStyle(
+                      fontSize: 16.sp,
+                      color: slide == 1 ? Colors.black : Colors.grey),
+                )
+              },
+              groupValue: slide,
+              onValueChanged: (value) {
+                setState(() {
+                  slide = value;
+                });
+              }),
+        )),
         body: Column(
           children: [
-            SizedBox(height: 6),
-            Center(
-              child: CupertinoSlidingSegmentedControl(
-                  children: {
-                    0: Text(
-                      '话题广场',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: slide == 0 ? Colors.black : Colors.grey),
-                    ),
-                    1: Text(
-                      '我的圈子',
-                      style: TextStyle(
-                          fontSize: 16,
-                          color: slide == 1 ? Colors.black : Colors.grey),
-                    )
-                  },
-                  groupValue: slide,
-                  onValueChanged: (value) {
-                    setState(() {
-                      slide = value;
-                    });
-                  }),
-            ),
             SizedBox(height: 6),
             Expanded(
                 child: IndexedStack(

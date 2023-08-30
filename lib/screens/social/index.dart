@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/weights/item-topic.dart';
+import 'package:flutter_demo/screens/social/widgets/item.dart';
 
-class TopicPage extends StatefulWidget {
-  TopicPage({super.key});
+class SocialPage extends StatefulWidget {
+  SocialPage({super.key});
   @override
-  State<StatefulWidget> createState() => TopicState();
+  State<StatefulWidget> createState() => SocialState();
 }
 
-class TopicState extends State<TopicPage> with AutomaticKeepAliveClientMixin {
+class SocialState extends State<SocialPage> with AutomaticKeepAliveClientMixin {
   List list = List.generate(10, (index) => index);
   onItemPress() {}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xfff5f7f9),
+        backgroundColor: Colors.grey[100],
         body: ListView(addAutomaticKeepAlives: false, children: [
           Column(
             children: list
-                .map((e) => ItemTopicWidget(
+                .map((e) => SocialItem(
                       onItemPress: onItemPress,
                     ))
                 .toList(),
           )
         ]));
   }
-
+  
   @override
   void initState() {
     // TODO: implement initState

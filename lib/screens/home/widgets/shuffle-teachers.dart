@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ItemsSeriesesLatestWidget extends StatefulWidget {
-  ItemsSeriesesLatestWidget({Key? key}) : super(key: key);
+class ShuffleTeachers extends StatefulWidget {
+  ShuffleTeachers({Key? key}) : super(key: key);
   @override
-  State<StatefulWidget> createState() => ItemsSeriesesLatestState();
+  State<StatefulWidget> createState() => ShuffleTeachersState();
 }
 
-class ItemsSeriesesLatestState extends State<ItemsSeriesesLatestWidget> {
+class ShuffleTeachersState extends State<ShuffleTeachers> {
   final datas = List.generate(8, (index) => null);
 
   @override

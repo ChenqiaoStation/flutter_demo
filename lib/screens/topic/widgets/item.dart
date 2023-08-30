@@ -3,9 +3,9 @@ import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_demo/model/SimpleKeyValue.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ItemTopicWidget extends StatefulWidget {
+class TopicItem extends StatefulWidget {
   final onItemPress;
-  ItemTopicWidget({
+  TopicItem({
     Key? key,
     required this.onItemPress,
   }) : super(key: key);
@@ -13,7 +13,7 @@ class ItemTopicWidget extends StatefulWidget {
   State<StatefulWidget> createState() => ItemTopicState();
 }
 
-class ItemTopicState extends State<ItemTopicWidget> {
+class ItemTopicState extends State<TopicItem> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,8 +29,8 @@ class ItemTopicState extends State<ItemTopicWidget> {
               child: Image.network(
                 xUtils.useCDN(
                     "https://cdn.cctv3.net/net.cctv3.typecho/i.jpg", 48),
-                height: 48.w,
-                width: 48.w,
+                height: 36.w,
+                width: 36.w,
               ),
             ),
             SizedBox(width: 10),
@@ -43,7 +43,7 @@ class ItemTopicState extends State<ItemTopicWidget> {
                     "陈桥驿站",
                     style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: 14.sp,
                         fontWeight: FontWeight.bold),
                   ),
                   // SizedBox(width: 4),
@@ -52,18 +52,16 @@ class ItemTopicState extends State<ItemTopicWidget> {
                   //   style: TextStyle(color: Colors.grey, fontSize: 12),
                   // )
                 ]),
-                SizedBox(
-                  height: 4,
-                ),
                 Text(
                   "发表于两分钟前",
-                  style: TextStyle(color: Colors.grey, fontSize: 12),
+                  style: TextStyle(color: Colors.grey, fontSize: 12.sp),
                 )
               ],
             )),
             Text(
               '+关注',
-              style: TextStyle(color: Colors.blueAccent, fontSize: 14),
+              style: TextStyle(
+                  color: Theme.of(context).primaryColor, fontSize: 14.sp),
             )
           ],
         ),
@@ -117,18 +115,19 @@ class ItemTopicState extends State<ItemTopicWidget> {
               padding: EdgeInsets.symmetric(vertical: 2, horizontal: 4),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
-                  color: Colors.grey[200]),
+                  color: Theme.of(context).primaryColor.withOpacity(0.08)),
               child: Row(
                 children: [
                   Icon(
                     Icons.whatshot_outlined,
                     size: 16,
-                    color: Colors.blueAccent,
+                    color: Theme.of(context).primaryColor,
                   ),
                   SizedBox(width: 4),
                   Text(
                     '17.没留记载的溥仪未遂复辟',
-                    style: TextStyle(color: Colors.blueAccent, fontSize: 12),
+                    style: TextStyle(
+                        color: Theme.of(context).primaryColor, fontSize: 12),
                   )
                 ],
               ),

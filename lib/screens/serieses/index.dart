@@ -1,14 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_demo/model/SimpleKeyValue.dart';
-import 'package:flutter_demo/weights/item-series-last.dart';
-import 'package:flutter_demo/weights/items-keywords-trend.dart';
-import 'package:flutter_demo/weights/items-series-tags.dart';
-import 'package:flutter_demo/weights/items-serieses-latest.dart';
-import 'package:flutter_demo/weights/items-serieses-shuffle.dart';
-import 'package:flutter_demo/weights/items-teachers-shuffle.dart';
-import 'package:flutter_demo/weights/my-swiper.dart';
+import 'package:flutter_demo/screens/serieses/widgets/item.dart';
+import 'package:flutter_demo/screens/serieses/widgets/series-tabs.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SeriesesPage extends StatefulWidget {
@@ -662,171 +656,68 @@ class SeriesesState extends State<SeriesesPage>
     width = MediaQuery.of(context).size.width;
     height = width / 3;
     return Scaffold(
-        backgroundColor: Color(0xfff5f7f9),
+        backgroundColor: Colors.grey[100],
         resizeToAvoidBottomInset: true,
+        appBar: AppBar(
+          title: Container(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SeriesTabs(
+                  isZoomOut: true,
+                  select: this.selectYear,
+                  datas: SimpleKeyValue.seriesYears(),
+                  isDot: true,
+                  onItemPress: onYearPress),
+            ],
+          )),
+        ),
         body: Column(children: [
           Container(
-              padding: EdgeInsets.symmetric(horizontal: 6),
-              child: Column(
-                children: [
-                  SizedBox(
-                    height: 12,
-                  ),
-                  ItemsSeriesTagsWidget(
-                      select: this.selectYear,
-                      datas: SimpleKeyValue.seriesYears(),
-                      onItemPress: onYearPress),
-                  ItemsSeriesTagsWidget(
-                      select: this.selectSort,
-                      datas: SimpleKeyValue.seriesSorts(),
-                      onItemPress: onSortPress)
-                ],
-              )),
+            padding: EdgeInsets.all(12),
+            decoration: BoxDecoration(color: Colors.white),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Icon(
+                      Icons.style_outlined,
+                      size: 18.sp,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    Text(
+                      '排序方式',
+                      style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontSize: 14.sp),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  width: 24,
+                ),
+                SeriesTabs(
+                    isZoomOut: false,
+                    select: this.selectSort,
+                    isDot: false,
+                    datas: SimpleKeyValue.seriesSorts(),
+                    onItemPress: onSortPress),
+              ],
+            ),
+          ),
           Expanded(
               child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 12),
                   child: ListView(
-                    children: datas
-                        .map((e) => Container(
-                              padding: EdgeInsets.all(4),
-                              margin: EdgeInsets.only(bottom: 12),
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(12))),
-                              child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          child: Image.network(
-                                            e['capture'] as String,
-                                            width: 75.w,
-                                            height: 100.w,
-                                            fit: BoxFit.fill,
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: 8,
-                                        ),
-                                        Expanded(
-                                            child: Container(
-                                          height: 100.w,
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Column(
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    e['title'] as String,
-                                                    style: TextStyle(
-                                                        color: Colors.black,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        fontSize: 16.sp),
-                                                  ),
-                                                  Text(
-                                                    e['message'] as String,
-                                                    maxLines: 2,
-                                                    style: TextStyle(
-                                                        color: Colors.grey,
-                                                        fontSize: 14.sp,
-                                                        overflow: TextOverflow
-                                                            .ellipsis),
-                                                  ),
-                                                ],
-                                              ),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Row(
-                                                    children: [
-                                                      ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius.all(
-                                                                Radius.circular(
-                                                                    16.w)),
-                                                        child: Image.network(
-                                                          'https://cdn.cctv3.net/net.cctv3.typecho/i.jpg',
-                                                          height: 32.w,
-                                                          width: 32.w,
-                                                        ),
-                                                      ),
-                                                      SizedBox(
-                                                        width: 5,
-                                                      ),
-                                                      Text(
-                                                        '陈桥驿站',
-                                                        style: TextStyle(
-                                                            fontSize: 14.sp),
-                                                      )
-                                                    ],
-                                                  ),
-                                                  Row(
-                                                    children: [
-                                                      Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.play_arrow,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .primaryColor,
-                                                            size: 14,
-                                                          ),
-                                                          Text(
-                                                            '${e['clickCount']}播放',
-                                                            style: TextStyle(
-                                                                fontSize: 14.sp,
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .primaryColor),
-                                                          )
-                                                        ],
-                                                      ),
-                                                      SizedBox(
-                                                        width: 24,
-                                                      ),
-                                                      Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.support,
-                                                            color: Theme.of(
-                                                                    context)
-                                                                .primaryColor,
-                                                            size: 14,
-                                                          ),
-                                                          Text(
-                                                            '${e['clickCount']}收藏',
-                                                            style: TextStyle(
-                                                                fontSize: 14.sp,
-                                                                color: Theme.of(
-                                                                        context)
-                                                                    .primaryColor),
-                                                          )
-                                                        ],
-                                                      )
-                                                    ],
-                                                  )
-                                                ],
-                                              )
-                                            ],
-                                          ),
-                                        ))
-                                      ],
-                                    )
-                                  ]),
-                            ))
-                        .toList(),
+                    children: [
+                      SizedBox(height: 12),
+                      ...datas.map((e) => SeriesItem(item: e)).toList()
+                    ],
                   )))
         ]));
   }

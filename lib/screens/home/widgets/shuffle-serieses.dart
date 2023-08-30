@@ -3,18 +3,19 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class ItemsSeriesesShuffleWidget extends StatefulWidget {
-  ItemsSeriesesShuffleWidget({Key? key}) : super(key: key);
+class ShuffleSerieses extends StatefulWidget {
+  ShuffleSerieses({Key? key}) : super(key: key);
   @override
-  State<StatefulWidget> createState() => ItemsSeriesesShuffleState();
+  State<StatefulWidget> createState() => ShuffleSeriesesState();
 }
 
-class ItemsSeriesesShuffleState extends State<ItemsSeriesesShuffleWidget> {
+class ShuffleSeriesesState extends State<ShuffleSerieses> {
   final datas = List.generate(8, (index) => null);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+        padding: EdgeInsets.symmetric(vertical: 12),
         decoration: BoxDecoration(
             color: Colors.white, borderRadius: BorderRadius.circular(12)),
         child: ListView(
