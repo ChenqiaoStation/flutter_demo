@@ -74,7 +74,7 @@ class SeriesItem extends StatelessWidget {
                         item['message'] as String,
                         maxLines: 2,
                         style: TextStyle(
-                            color: Colors.grey,
+                            color: Colors.black.withOpacity(0.618),
                             fontSize: 14.sp,
                             overflow: TextOverflow.ellipsis),
                       ),

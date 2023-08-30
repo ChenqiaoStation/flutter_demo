@@ -50,7 +50,7 @@ class MyState extends State<MyPage> {
                       style: TextStyle(
                           fontSize: 16,
                           color: Colors.white,
-                          fontWeight: FontWeight.bold),
+                          fontWeight: FontWeight.w500),
                     ),
                     SizedBox(
                       height: 10,

@@ -39,7 +39,7 @@ class ItemsTopicJoinedState extends State<ItemsTopicJoinedWidget> {
                                   ? Colors.black
                                   : Colors.grey,
                               fontWeight: widget.select == e.value
-                                  ? FontWeight.bold
+                                  ? FontWeight.w500
                                   : FontWeight.normal),
                         ),
                       )),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -29,12 +28,16 @@ class ShuffleSeriesesState extends State<ShuffleSerieses> {
                       height: 100.w,
                       child: Row(
                         children: [
-                          Image.network(
-                            xUtils.useCDN(
-                                'https://cdn.cctv3.net/net.cctv3.BaijiaJiangtan/Snipaste_2023-06-24_13-09-22.jpg',
-                                84),
-                            height: 100.w,
-                            width: 75.w,
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.network(
+                              xUtils.useCDN(
+                                  'https://cdn.cctv3.net/net.cctv3.BaijiaJiangtan/Snipaste_2023-06-24_13-09-22.jpg',
+                                  150),
+                              height: 100.w,
+                              width: 75.w,
+                              fit: BoxFit.fill,
+                            ),
                           ),
                           SizedBox(
                             width: 12,
@@ -52,17 +55,18 @@ class ShuffleSeriesesState extends State<ShuffleSerieses> {
                                         Text(
                                           '大唐贵妃',
                                           style: TextStyle(
-                                              fontSize: 16,
+                                              fontSize: 16.sp,
                                               color: Colors.black,
-                                              fontWeight: FontWeight.bold),
+                                              fontWeight: FontWeight.w500),
                                           maxLines: 1,
                                         ),
                                         Text(
                                           '大唐贵妃杨玉环，羞花之貌、倾国倾城。那么，真实的历史中，杨贵妃真的是个“胖美人”吗？这位马蹄硝烟下的乱世佳人，这位谜一样的奇女子，用她的一生，为我们谱写出了一曲婉转动人的长恨歌！',
                                           style: TextStyle(
-                                              fontSize: 14,
-                                              color: Colors.black,
-                                              fontWeight: FontWeight.w500),
+                                            fontSize: 14.sp,
+                                            color:
+                                                Colors.black.withOpacity(0.618),
+                                          ),
                                           maxLines: 2,
                                           overflow: TextOverflow.ellipsis,
                                         )

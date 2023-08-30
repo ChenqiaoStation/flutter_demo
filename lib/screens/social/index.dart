@@ -25,7 +25,7 @@ class SocialState extends State<SocialPage> with AutomaticKeepAliveClientMixin {
           )
         ]));
   }
-  
+
   @override
   void initState() {
     // TODO: implement initState

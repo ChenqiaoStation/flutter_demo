@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
-import 'package:flutter_demo/model/SimpleKeyValue.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TopicItem extends StatefulWidget {
@@ -44,7 +43,7 @@ class ItemTopicState extends State<TopicItem> {
                     style: TextStyle(
                         color: Colors.black,
                         fontSize: 14.sp,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.w500),
                   ),
                   // SizedBox(width: 4),
                   // Text(
@@ -79,14 +78,14 @@ class ItemTopicState extends State<TopicItem> {
                       "17.没留记载的溥仪未遂复辟",
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                       ),
                     ),
                     Text(
                       "在天津，许多事情让溥仪深感失落，他让晚清遗老写信给吴佩孚，提出了两条建议：一是要求恢复溥仪宣统年号，让溥仪重新回归故宫；二是恢复《清室优待条件》。实际上这就意味着溥仪要复辟登基了。对于溥仪复辟一事，国务院秘密地举行了一次无记名投票，结果是否定溥仪的议案，于是溥仪就向故宫和民国政府发难，最后溥仪赢了出宫后的第一场官司。",
                       style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 14,
+                        color: Colors.black.withOpacity(0.618),
+                        fontSize: 14.sp,
                       ),
                       maxLines: 2,
                     )

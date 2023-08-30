@@ -36,7 +36,10 @@ class HelloFlutter extends StatelessWidget {
         return newWidget;
       },
       navigatorObservers: [BotToastNavigatorObserver()],
-      theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+      theme: ThemeData(
+          useMaterial3: true,
+          colorScheme: lightColorScheme,
+          fontFamily: 'HarmonyOS-Sans'),
       home: AppPage(),
     );
   }

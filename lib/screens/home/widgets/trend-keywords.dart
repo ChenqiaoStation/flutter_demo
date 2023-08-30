@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TrendKeywords extends StatefulWidget {
   TrendKeywords({Key? key}) : super(key: key);
@@ -41,13 +42,13 @@ class TrendKeywordsState extends State<TrendKeywords> {
               .map((e) => Container(
                     margin: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
                     child: Row(mainAxisSize: MainAxisSize.min, children: [
-                      Icon(Icons.lens_blur, size: 16),
+                      Icon(Icons.lens_blur, size: 16.sp),
                       SizedBox(
                         width: 4,
                       ),
                       Text(e,
                           style: TextStyle(
-                              color: xUtils.useRandomColor(), fontSize: 14))
+                              color: xUtils.useRandomColor(), fontSize: 14.sp))
                     ]),
                   ))
               .toList(),

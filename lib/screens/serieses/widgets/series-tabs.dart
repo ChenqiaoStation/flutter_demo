@@ -1,9 +1,4 @@
-import 'dart:developer';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_demo/model/SimpleKeyValue.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -53,7 +48,7 @@ class SeriesTabsState extends State<SeriesTabs> {
                                           ? Theme.of(context).primaryColor
                                           : Colors.grey,
                                       fontWeight: widget.select == e.value
-                                          ? FontWeight.bold
+                                          ? FontWeight.w500
                                           : FontWeight.normal),
                                 ),
                                 widget.isDot
