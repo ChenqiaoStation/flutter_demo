@@ -61,10 +61,11 @@ class AppState extends State<AppPage> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          
-        },
-        child: Icon(Icons.bug_report_outlined),
+        onPressed: () {},
+        child: Icon(
+          Icons.bug_report_outlined,
+          color: Colors.white,
+        ),
       ),
     );
   }

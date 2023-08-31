@@ -7,7 +7,7 @@ import 'package:flutter_demo/screens/home/widgets/last-series.dart';
 import 'package:flutter_demo/screens/home/widgets/shuffle-serieses.dart';
 import 'package:flutter_demo/screens/home/widgets/shuffle-teachers.dart';
 import 'package:flutter_demo/screens/home/widgets/trend-keywords.dart';
-import 'package:flutter_demo/screens/player.dart';
+import 'package:flutter_demo/screens/player/index.dart';
 import 'package:flutter_demo/screens/home/widgets/my-swiper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:marquee/marquee.dart';

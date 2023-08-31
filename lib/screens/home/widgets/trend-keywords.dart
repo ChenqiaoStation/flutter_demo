@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
-import 'package:flutter_demo/weights/common-card.dart';
+import 'package:flutter_demo/weights/group-card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TrendKeywords extends StatefulWidget {
@@ -34,7 +34,7 @@ class TrendKeywordsState extends State<TrendKeywords> {
 
   @override
   Widget build(BuildContext context) {
-    return CommonCard(
+    return GroupCard(
       title: '热门搜索',
       child: Wrap(
         children: datas

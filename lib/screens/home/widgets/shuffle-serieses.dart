@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
-import 'package:flutter_demo/weights/common-card.dart';
+import 'package:flutter_demo/weights/group-card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ShuffleSerieses extends StatefulWidget {
@@ -14,7 +14,7 @@ class ShuffleSeriesesState extends State<ShuffleSerieses> {
 
   @override
   Widget build(BuildContext context) {
-    return CommonCard(
+    return GroupCard(
       title: '内容推荐',
       child: Column(
         children: datas

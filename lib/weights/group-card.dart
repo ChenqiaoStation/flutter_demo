@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CommonCard extends StatelessWidget {
+class GroupCard extends StatelessWidget {
   final title;
   final child;
 
-  CommonCard({required this.child, required this.title});
+  GroupCard({required this.child, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class CommonCard extends StatelessWidget {
             style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500),
           ),
           SizedBox(
-            height: 10,
+            height: 6,
           ),
           child
         ],
