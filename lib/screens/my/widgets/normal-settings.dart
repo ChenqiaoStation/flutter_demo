@@ -27,7 +27,9 @@ class NormalSettings extends StatelessWidget {
           ),
           ...CommonMenu.loadCommonMenus()
               .map((e) => GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      onMenuPress(e.id);
+                    },
                     child: Container(
                       margin: EdgeInsets.symmetric(vertical: 10),
                       child: Row(

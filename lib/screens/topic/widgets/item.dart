@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -77,9 +79,10 @@ class ItemTopicState extends State<TopicItem> {
                     Text(
                       "17.没留记载的溥仪未遂复辟",
                       style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 16.sp,
-                      ),
+                          color: Colors.black,
+                          fontSize: 16.sp,
+                          overflow: TextOverflow.ellipsis),
+                      maxLines: 1,
                     ),
                     Text(
                       "在天津，许多事情让溥仪深感失落，他让晚清遗老写信给吴佩孚，提出了两条建议：一是要求恢复溥仪宣统年号，让溥仪重新回归故宫；二是恢复《清室优待条件》。实际上这就意味着溥仪要复辟登基了。对于溥仪复辟一事，国务院秘密地举行了一次无记名投票，结果是否定溥仪的议案，于是溥仪就向故宫和民国政府发难，最后溥仪赢了出宫后的第一场官司。",
@@ -93,17 +96,19 @@ class ItemTopicState extends State<TopicItem> {
                 ),
               ),
             ),
-            SizedBox(
-              width: 10,
-            ),
-            ClipRRect(
-                borderRadius: BorderRadius.circular(4),
-                child: Image.network(
-                  "https://p1.img.cctvpic.com/fmspic/2016/09/21/d04efcdd733948eab722e9cae85ec307-1150.jpg",
-                  height: 75.w,
-                  width: 100.w,
-                  fit: BoxFit.cover,
-                )),
+            Random().nextDouble() < 0.5
+                ? Container(
+                    margin: EdgeInsets.only(left: 10),
+                    child: ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
+                        child: Image.network(
+                          "https://p1.img.cctvpic.com/fmspic/2016/09/21/d04efcdd733948eab722e9cae85ec307-1150.jpg",
+                          height: 75.w,
+                          width: 100.w,
+                          fit: BoxFit.cover,
+                        )),
+                  )
+                : Container(),
           ],
         ),
         SizedBox(height: 10),

@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/screens/player/widgets/chapter.dart';
+import 'package:flutter_demo/screens/player/widgets/chapters.dart';
 import 'package:flutter_demo/screens/player/widgets/series.dart';
-import 'package:flutter_demo/weights/group-card.dart';
-import 'package:flutter_demo/weights/simple-card.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => DetailPageState();
+}
+
+class DetailPageState extends State<DetailPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -23,7 +27,15 @@ class DetailPage extends StatelessWidget {
         SizedBox(
           height: 12,
         ),
+        Chapters(onAuthorPress: () {}, onLikePress: () {}),
+        SizedBox(
+          height: 12,
+        ),
       ]),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

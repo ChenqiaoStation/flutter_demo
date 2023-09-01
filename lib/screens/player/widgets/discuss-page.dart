@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/weights/simple-card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class DiscussPage extends StatelessWidget {
+class DiscussPage extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => DiscussPageState();
+}
+
+class DiscussPageState extends State<DiscussPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -73,4 +79,8 @@ class DiscussPage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  // TODO: implement wantKeepAlive
+  bool get wantKeepAlive => true;
 }

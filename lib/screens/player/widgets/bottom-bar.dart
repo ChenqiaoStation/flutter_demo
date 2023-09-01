@@ -2,28 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomBar extends StatelessWidget {
-  final onAuthorPress;
-  final onLikePress;
+  final onInputPress;
+  final onSupportPress;
+  final onCollectPress;
 
-  BottomBar({required this.onAuthorPress, required this.onLikePress});
+  BottomBar(
+      {required this.onInputPress,
+      required this.onSupportPress,
+      required this.onCollectPress});
 
-  buildCounter(context, icon, value) => Container(
+  buildCounter(context, icon, value, f) => Container(
         width: 32.w,
-        child: Column(
-          children: [
-            Icon(
-              icon,
-              color: Theme.of(context).primaryColor,
-              size: 20.w,
-            ),
-            SizedBox(
-              height: 4,
-            ),
-            Text(
-              value,
-              style: TextStyle(color: Colors.black, fontSize: 10.sp),
-            )
-          ],
+        child: GestureDetector(
+          onTap: () {
+            f();
+          },
+          child: Column(
+            children: [
+              Icon(
+                icon,
+                color: Theme.of(context).primaryColor,
+                size: 20.w,
+              ),
+              SizedBox(
+                height: 4,
+              ),
+              Text(
+                value,
+                style: TextStyle(color: Colors.black, fontSize: 10.sp),
+              )
+            ],
+          ),
         ),
       );
 
@@ -39,26 +48,31 @@ class BottomBar extends StatelessWidget {
       child: Row(
         children: [
           Flexible(
-              child: Container(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(
-                color: Colors.grey[200],
-                borderRadius: BorderRadius.circular(12)),
-            child: Row(
-              children: [
-                Icon(
-                  Icons.edit,
-                  color: Colors.grey,
-                  size: 16.w,
-                ),
-                SizedBox(
-                  width: 6,
-                ),
-                Text(
-                  '说点什么吧 ...',
-                  style: TextStyle(color: Colors.grey, fontSize: 14.sp),
-                )
-              ],
+              child: GestureDetector(
+            onTap: () {
+              onInputPress();
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+              decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  borderRadius: BorderRadius.circular(12)),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.edit,
+                    color: Colors.grey,
+                    size: 16.w,
+                  ),
+                  SizedBox(
+                    width: 6,
+                  ),
+                  Text(
+                    '说点什么吧 ...',
+                    style: TextStyle(color: Colors.grey, fontSize: 14.sp),
+                  )
+                ],
+              ),
             ),
           )),
           SizedBox(
@@ -66,9 +80,14 @@ class BottomBar extends StatelessWidget {
           ),
           Row(
             children: [
-              buildCounter(context, Icons.favorite_outline, '0'),
-              buildCounter(context, Icons.thumb_up_alt_outlined, '0'),
-              buildCounter(context, Icons.mark_chat_unread_outlined, '0'),
+              buildCounter(context, Icons.favorite_outline, '0', () {
+                onCollectPress();
+              }),
+              buildCounter(context, Icons.thumb_up_alt_outlined, '0', () {
+                onSupportPress();
+              }),
+              buildCounter(
+                  context, Icons.mark_chat_unread_outlined, '0', () {}),
             ],
           )
         ],

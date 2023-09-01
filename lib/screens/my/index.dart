@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_demo/screens/my/widgets/my-profile.dart';
 import 'package:flutter_demo/screens/my/widgets/normal-settings.dart';
+import 'package:flutter_demo/screens/suggest/index.dart';
 
 class MyPage extends StatefulWidget {
   MyPage({super.key});
@@ -16,6 +17,14 @@ class MyState extends State<MyPage> {
 
   onMenuPress(id) {
     xUtils.useToast(id);
+    switch (id) {
+      case 'bug':
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => SuggestPage()));
+        break;
+      default:
+        break;
+    }
   }
 
   @override

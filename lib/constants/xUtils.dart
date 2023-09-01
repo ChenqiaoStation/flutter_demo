@@ -26,6 +26,12 @@ class xUtils {
     return formattedDate;
   }
 
+  static useSeconds2HHmmss(int seconds) {
+    Duration duration = Duration(seconds: seconds);
+    String time = duration.toString().split('.').first.padLeft(8, "0");
+    return time;
+  }
+
   static useGreyImageFilter() {
     return [
       0.2126,
