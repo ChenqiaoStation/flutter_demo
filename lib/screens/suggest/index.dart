@@ -124,9 +124,12 @@ class SuggestPageState extends State<SuggestPage> {
                     bottom: MediaQuery.of(context).padding.bottom,
                     left: 12,
                     right: 12),
-                child: FilledButton(
-                  child: Text('提交反馈'),
-                  onPressed: () {},
+                child: SizedBox(
+                  height: 36.w,
+                  child: FilledButton(
+                    child: Text('提交反馈'),
+                    onPressed: () {},
+                  ),
                 ),
               )
             ],

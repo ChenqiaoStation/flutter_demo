@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_demo/screens/markdowner/index.dart';
+import 'package:flutter_demo/screens/my-account/index.dart';
 import 'package:flutter_demo/screens/my/widgets/my-profile.dart';
 import 'package:flutter_demo/screens/my/widgets/normal-settings.dart';
 import 'package:flutter_demo/screens/suggest/index.dart';
@@ -19,6 +20,9 @@ class MyState extends State<MyPage> {
   onMenuPress(id) {
     xUtils.useToast(id);
     switch (id) {
+      case 'account':
+        xUtils.useNavigation(context, MyAccountPage());
+        break;
       case 'bug':
         xUtils.useNavigation(context, SuggestPage());
         break;

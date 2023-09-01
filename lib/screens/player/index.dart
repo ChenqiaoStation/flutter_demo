@@ -12,7 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class PlayerPage extends StatefulWidget {
   PlayerPage({super.key});
   final FijkPlayer player = FijkPlayer();
-  
+
   @override
   State<StatefulWidget> createState() => PlayerState();
 }
@@ -140,7 +140,7 @@ class PlayerState extends State<PlayerPage>
                               width: 8,
                             ),
                             SizedBox(
-                              height: 32.w,
+                              height: 36.w,
                               child: FilledButton(
                                   onPressed: () {
                                     setState(() {
