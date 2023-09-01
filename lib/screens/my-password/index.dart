@@ -30,7 +30,7 @@ class PasswordPageState extends State<PasswordPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          '账号设置',
+          '修改密码',
           style: TextStyle(fontSize: 18.sp),
         ),
         leading: IconButton(

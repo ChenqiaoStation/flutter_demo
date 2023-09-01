@@ -28,7 +28,7 @@ class CommonMenu {
   static List<CommonMenu> loadAccountMenus() {
     return [
       CommonMenu(id: 'profile', name: '基本资料', icon: Icons.person_pin_outlined),
-      CommonMenu(id: 'phone', name: '手机换绑', icon: Icons.phonelink_erase),
+      CommonMenu(id: 'mobile', name: '手机换绑', icon: Icons.phonelink_erase),
       CommonMenu(id: 'password', name: '修改密码', icon: Icons.vpn_key_outlined),
       CommonMenu(id: 'delete', name: '注销账号', icon: Icons.person_remove_outlined)
     ];

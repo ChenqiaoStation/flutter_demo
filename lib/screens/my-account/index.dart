@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_demo/model/CommonMenu.dart';
-import 'package:flutter_demo/screens/password/index.dart';
+import 'package:flutter_demo/screens/my-mobile/index.dart';
+import 'package:flutter_demo/screens/my-password/index.dart';
 import 'package:flutter_demo/weights/setting-item.dart';
 import 'package:flutter_demo/weights/simple-card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -17,7 +18,8 @@ class MyState extends State<MyAccountPage> {
     switch (id) {
       case 'profile':
         break;
-      case 'phone':
+      case 'mobile':
+        xUtils.useNavigation(context, MobilePage());
         break;
       case 'password':
         xUtils.useNavigation(context, PasswordPage());
