@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
+import 'package:flutter_demo/screens/markdowner/index.dart';
 import 'package:flutter_demo/screens/my/widgets/my-profile.dart';
 import 'package:flutter_demo/screens/my/widgets/normal-settings.dart';
 import 'package:flutter_demo/screens/suggest/index.dart';
@@ -19,8 +20,34 @@ class MyState extends State<MyPage> {
     xUtils.useToast(id);
     switch (id) {
       case 'bug':
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SuggestPage()));
+        xUtils.useNavigation(context, SuggestPage());
+        break;
+
+      case 'about':
+        xUtils.useNavigation(
+            context,
+            MarkdownerPage(
+                title: '关于我们',
+                uri:
+                    'https://cdn.cctv3.net/net.cctv3.flutterTruck/docs/about111.md'));
+        break;
+
+      case 'rule':
+        xUtils.useNavigation(
+            context,
+            MarkdownerPage(
+                title: '平台规则',
+                uri:
+                    'https://cdn.cctv3.net/net.cctv3.flutterTruck/docs/about111.md'));
+        break;
+
+      case 'donate':
+        xUtils.useNavigation(
+            context,
+            MarkdownerPage(
+                title: '捐赠支持',
+                uri:
+                    'https://cdn.cctv3.net/net.cctv3.flutterTruck/docs/about111.md'));
         break;
       default:
         break;

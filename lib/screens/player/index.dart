@@ -12,7 +12,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class PlayerPage extends StatefulWidget {
   PlayerPage({super.key});
   final FijkPlayer player = FijkPlayer();
-
+  
   @override
   State<StatefulWidget> createState() => PlayerState();
 }
@@ -20,7 +20,7 @@ class PlayerPage extends StatefulWidget {
 class PlayerState extends State<PlayerPage>
     with TickerProviderStateMixin, WidgetsBindingObserver {
   final FijkPlayer player = new FijkPlayer();
-  int discussButtonStatus = 0;
+  int bottomBarStatus = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +94,7 @@ class PlayerState extends State<PlayerPage>
                 BottomBar(
                   onInputPress: () {
                     setState(() {
-                      discussButtonStatus = 1;
+                      bottomBarStatus = 1;
                     });
                   },
                   onSupportPress: () {},
@@ -113,7 +113,7 @@ class PlayerState extends State<PlayerPage>
                                 autofocus: true,
                                 onSubmitted: (s) {
                                   setState(() {
-                                    discussButtonStatus = 0;
+                                    bottomBarStatus = 0;
                                   });
                                 },
                                 textInputAction: TextInputAction.done,
@@ -144,7 +144,7 @@ class PlayerState extends State<PlayerPage>
                               child: FilledButton(
                                   onPressed: () {
                                     setState(() {
-                                      discussButtonStatus = 0;
+                                      bottomBarStatus = 0;
                                     });
                                   },
                                   child: Text(
@@ -155,7 +155,7 @@ class PlayerState extends State<PlayerPage>
                             )
                           ]),
                     )),
-              ][discussButtonStatus],
+              ][bottomBarStatus],
             ],
           )
         ],

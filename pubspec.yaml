@@ -26,6 +26,7 @@ dependencies:
   bot_toast: ^4.0.4
   # http://tool.chacuo.net/cryptaes/
   encrypt: ^5.0.1
+  flutter_markdown: ^0.6.17+1
 
 dev_dependencies:
   flutter_test:

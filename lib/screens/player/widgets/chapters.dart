@@ -20,7 +20,7 @@ class Chapters extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           child: Row(
             children: [
-              ...(DATAS['data'] as List<dynamic>)
+              ...(xUtils.useSortedChapters(DATAS['data'] as List<dynamic>))
                   .map((e) => Container(
                         margin: EdgeInsets.symmetric(horizontal: 4),
                         child: Stack(

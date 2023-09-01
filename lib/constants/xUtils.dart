@@ -1,7 +1,7 @@
 import 'dart:math';
+
 import 'package:bot_toast/bot_toast.dart';
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
 class xUtils {
   static useCDN(String url, int width) {
@@ -62,5 +62,19 @@ class xUtils {
         text: text,
         animationDuration: Duration(milliseconds: 618),
         textStyle: TextStyle(fontSize: 16, color: Colors.white));
+  }
+
+  static useSortedChapters(List<dynamic> list) {
+    var _list = [...list];
+    _list.sort((a, b) {
+      return int.parse(a['title'].split('.')[0]) -
+          int.parse(b['title'].split('.')[0]);
+    });
+    return _list;
+  }
+
+  static useNavigation(BuildContext context, Widget child) async {
+    await Navigator.push(
+        context, MaterialPageRoute(builder: (context) => child));
   }
 }
