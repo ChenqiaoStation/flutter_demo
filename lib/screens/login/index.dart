@@ -31,6 +31,7 @@ class MyState extends State<LoginPage> {
           if (result['status']) {
             xUtils.useToast('登陆成功 ...');
             statesProvider.setPerson(result['data']);
+            Navigator.pop(context);
           } else {}
         } else if (way == 1) {
           var result =
@@ -38,6 +39,7 @@ class MyState extends State<LoginPage> {
           if (result['status']) {
             xUtils.useToast('登陆成功 ...');
             statesProvider.setPerson(result['data']);
+            Navigator.pop(context);
           } else {}
         }
       } else {

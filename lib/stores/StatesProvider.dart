@@ -70,4 +70,9 @@ class StatesProvider extends ChangeNotifier {
     person = value;
     writeCache('person', value);
   }
+
+  void clearPerson() {
+    person = DEFAULT_PERSON;
+    writeCache('person', DEFAULT_PERSON);
+  }
 }

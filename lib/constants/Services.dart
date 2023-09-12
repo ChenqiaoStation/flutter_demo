@@ -2,7 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-final SERVER = 'http://192.168.110.171:3000';
+// final SERVER = 'http://192.168.110.171:3000';
+final SERVER = 'http://192.168.0.117:3000';
 
 class Services {
   // GET

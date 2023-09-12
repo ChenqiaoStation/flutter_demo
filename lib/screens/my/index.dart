@@ -7,6 +7,8 @@ import 'package:flutter_demo/screens/my-account/index.dart';
 import 'package:flutter_demo/screens/my/widgets/my-profile.dart';
 import 'package:flutter_demo/screens/my/widgets/normal-settings.dart';
 import 'package:flutter_demo/screens/suggest/index.dart';
+import 'package:flutter_demo/stores/StatesProvider.dart';
+import 'package:provider/provider.dart';
 
 class MyPage extends StatefulWidget {
   MyPage({super.key});
@@ -16,8 +18,7 @@ class MyPage extends StatefulWidget {
 }
 
 class MyState extends State<MyPage> {
-  dynamic bingSpider = null;
-
+  StatesProvider statesProvider = StatesProvider();
   onMenuPress(id) {
     xUtils.useToast(id);
     switch (id) {
@@ -56,7 +57,7 @@ class MyState extends State<MyPage> {
         break;
 
       case 'exit':
-        xUtils.useNavigation(context, LoginPage());
+        statesProvider.clearPerson();
         break;
       default:
         break;
@@ -67,26 +68,33 @@ class MyState extends State<MyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      body: Container(
-          decoration: BoxDecoration(color: Colors.grey[100]),
-          child: Column(
-            children: [
-              MyProfile(bingSpider: bingSpider),
-              Expanded(
-                  child: ListView(
-                padding: EdgeInsets.symmetric(horizontal: 12),
-                children: [
-                  SizedBox(
-                    height: 12,
-                  ),
-                  NormalSettings(onMenuPress: onMenuPress),
-                  SizedBox(
-                    height: 12,
-                  ),
-                ],
-              ))
-            ],
-          )),
+      body: Consumer<StatesProvider>(builder: (build, states, child) {
+        return Container(
+            decoration: BoxDecoration(color: Colors.grey[100]),
+            child: Column(
+              children: [
+                MyProfile(
+                    bingSpider: states.bingWallPaper,
+                    person: states.person,
+                    onPress: () {
+                      xUtils.useNavigation(context, LoginPage());
+                    }),
+                Expanded(
+                    child: ListView(
+                  padding: EdgeInsets.symmetric(horizontal: 12),
+                  children: [
+                    SizedBox(
+                      height: 12,
+                    ),
+                    NormalSettings(onMenuPress: onMenuPress),
+                    SizedBox(
+                      height: 12,
+                    ),
+                  ],
+                ))
+              ],
+            ));
+      }),
     );
   }
 
@@ -94,6 +102,7 @@ class MyState extends State<MyPage> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    statesProvider = Provider.of<StatesProvider>(context, listen: false);
     loadBingPicture();
   }
 
@@ -107,8 +116,6 @@ class MyState extends State<MyPage> {
     String today = xUtils.usePreviousDay(1);
     var result = await Dio().get(
         'https://mouday.github.io/wallpaper-database/${xUtils.usePreviousDay(1)}.json');
-    print(result.data);
-    bingSpider = result.data;
-    setState(() {});
+    statesProvider.setBingWallPaper(result.data);
   }
 }
