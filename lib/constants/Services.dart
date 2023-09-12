@@ -15,6 +15,7 @@ class Services {
     } else {
       xUtils.useToast(result.data['message']);
     }
+    // 解析的时候 result['data'];
     return result.data;
   }
 
@@ -32,6 +33,32 @@ class Services {
   static checkPassword(mobile, password) async {
     var result = await myGet('${SERVER}/person/checkPassword',
         {'mobile': mobile, 'password': password});
+    return result;
+  }
+
+  static selectPopularSearches(limit) async {
+    var result = await myGet('${SERVER}/search/selectPopularSearches', {
+      'limit': limit,
+    });
+    return result;
+  }
+
+  static selectShuffleTeachers(limit) async {
+    var result = await myGet('${SERVER}/teacher/selectShuffleTeachers', {
+      'limit': limit,
+    });
+    return result;
+  }
+
+  static selectLatestSeries() async {
+    var result = await myGet('${SERVER}/series/selectLatestSeries', {});
+    return result;
+  }
+
+  static selectShuffleSerieses(limit) async {
+    var result = await myGet('${SERVER}/series/selectShuffleSerieses', {
+      'limit': limit,
+    });
     return result;
   }
 }

@@ -83,4 +83,44 @@ class xUtils {
             r'^1(3[0-9]|4[579]|5[0-35-9]|6[56]|7[0135678]|8[0-9]|9[89])\d{8}$')
         .hasMatch(s);
   }
+
+  static String useTimeAgoSinceDate(String dateString,
+      {bool numericDates = true}) {
+    DateTime date = DateTime.parse(dateString).toLocal();
+    final now = DateTime.now().toLocal();
+    final difference = now.difference(date);
+
+    if (difference.inSeconds < 5) {
+      return '刚刚';
+    } else if (difference.inSeconds < 60) {
+      return '${difference.inSeconds}秒前';
+    } else if (difference.inMinutes < 60) {
+      return '${difference.inMinutes}分钟前';
+    } else if (difference.inHours < 24) {
+      return '${difference.inHours}小时前';
+    } else if (difference.inDays < 7) {
+      return '${difference.inDays}天前';
+    } else if (difference.inDays < 30) {
+      final weeks = (difference.inDays / 7).floor();
+      if (numericDates) {
+        return '$weeks周前';
+      } else {
+        return (weeks == 1) ? '上周' : '$weeks周前';
+      }
+    } else if (difference.inDays < 365) {
+      final months = (difference.inDays / 30).floor();
+      if (numericDates) {
+        return '$months个月前';
+      } else {
+        return (months == 1) ? '上个月' : '$months个月前';
+      }
+    } else {
+      final years = (difference.inDays / 365).floor();
+      if (numericDates) {
+        return '$years年前';
+      } else {
+        return (years == 1) ? '去年' : '$years年前';
+      }
+    }
+  }
 }

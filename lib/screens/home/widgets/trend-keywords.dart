@@ -3,54 +3,34 @@ import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_demo/weights/group-card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class TrendKeywords extends StatefulWidget {
-  TrendKeywords({Key? key}) : super(key: key);
-  @override
-  State<StatefulWidget> createState() => TrendKeywordsState();
-}
-
-class TrendKeywordsState extends State<TrendKeywords> {
-  List<String> datas = [
-    "哈希表",
-    "树",
-    "二叉树",
-    "栈",
-    "堆（优先队列）",
-    "图",
-    "链表",
-    "二叉搜索树",
-    "单调栈",
-    "有序集合",
-    "队列",
-    "拓扑排序",
-    "最短路",
-    "单调队列",
-    "双向链表",
-    "最小生成树",
-    "欧拉回路",
-    "强连通分量",
-    "双连通分量"
-  ];
+class TrendKeywords extends StatelessWidget {
+  final datas;
+  final onPress;
+  TrendKeywords({Key? key, required this.datas, required this.onPress})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return GroupCard(
       title: '热门搜索',
       child: Wrap(
-        children: datas
-            .map((e) => Container(
-                  margin: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
-                  child: Row(mainAxisSize: MainAxisSize.min, children: [
-                    Icon(Icons.lens_blur, size: 16.sp),
-                    SizedBox(
-                      width: 4,
-                    ),
-                    Text(e,
-                        style: TextStyle(
-                            color: xUtils.useRandomColor(), fontSize: 14.sp))
-                  ]),
-                ))
-            .toList(),
+        children: [
+          ...datas
+              .map((e) => Container(
+                    margin: EdgeInsets.only(top: 8, right: 8),
+                    child: Row(mainAxisSize: MainAxisSize.min, children: [
+                      Icon(Icons.lens_blur, size: 16.sp),
+                      SizedBox(
+                        width: 4,
+                      ),
+                      Text(e['name'],
+                          style: TextStyle(
+                              color: xUtils.useRandomColor(), fontSize: 14.sp))
+                    ]),
+                  ))
+              .toList()
+        ],
       ),
     );
   }

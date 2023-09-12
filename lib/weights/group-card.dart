@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class GroupCard extends StatelessWidget {
   final title;
   final child;
-
+  
   GroupCard({required this.child, required this.title});
 
   @override

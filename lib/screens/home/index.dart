@@ -1,8 +1,11 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/AESUtils.dart';
+import 'package:flutter_demo/constants/Services.dart';
+import 'package:flutter_demo/constants/xUtils.dart';
 import 'package:flutter_demo/screens/home/widgets/last-series.dart';
 import 'package:flutter_demo/screens/home/widgets/shuffle-serieses.dart';
 import 'package:flutter_demo/screens/home/widgets/shuffle-teachers.dart';
@@ -23,6 +26,10 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
   double height = 0;
   int currentIndex = 0;
   bool isSearching = false;
+  List popularKeywords = [];
+  List shuffleTeachers = [];
+  dynamic latestSeries = null;
+  List shuffleSerieses = [];
 
   final CarouselController swiper = CarouselController();
 
@@ -120,33 +127,65 @@ class HomeState extends State<HomePage> with AutomaticKeepAliveClientMixin {
             addAutomaticKeepAlives: false,
             padding: const EdgeInsets.symmetric(horizontal: 12),
             children: [
-              const SizedBox(height: 12),
-              MySwiper(
-                  datas: List.generate(4, (index) => '${index + 1}'),
-                  onItemPress: onSwiperPress),
-              const SizedBox(height: 12),
-              LastSeries(onItemPress: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => PlayerPage()));
-              }),
-              const SizedBox(height: 12),
-              TrendKeywords(),
-              const SizedBox(height: 12),
-              ShuffleTeachers(),
-              const SizedBox(
-                height: 12,
-              ),
-              ShuffleSerieses(),
-              const SizedBox(
-                height: 12,
-              ),
+              ...[
+                MySwiper(
+                    datas: List.generate(4, (index) => '${index + 1}'),
+                    onItemPress: onSwiperPress),
+                LastSeries(
+                    data: latestSeries,
+                    onItemPress: () {
+                      xUtils.useNavigation(context, PlayerPage());
+                    }),
+                TrendKeywords(
+                  datas: popularKeywords,
+                  onPress: () {},
+                ),
+                ShuffleTeachers(
+                  datas: shuffleTeachers,
+                  onPress: () {},
+                ),
+                ShuffleSerieses(datas: shuffleSerieses, onPress: () {}),
+              ]
+                  .map((e) => Container(
+                        margin: EdgeInsets.only(bottom: 12),
+                        child: e,
+                      ))
+                  .toList()
             ]));
+  }
+
+  loadPopularSearches() async {
+    var result = await Services.selectPopularSearches(10);
+    popularKeywords = [...result['data']];
+    setState(() {});
+  }
+
+  loadShuffleTeachers() async {
+    var result = await Services.selectShuffleTeachers(10);
+    shuffleTeachers = [...result['data']];
+    setState(() {});
+  }
+
+  loadLatestSeries() async {
+    var result = await Services.selectLatestSeries();
+    latestSeries = result['data'];
+    setState(() {});
+  }
+
+  loadShuffleSerieses() async {
+    var result = await Services.selectShuffleSerieses(9);
+    shuffleSerieses = [...result['data']];
+    setState(() {});
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    loadPopularSearches();
+    loadShuffleTeachers();
+    loadLatestSeries();
+    loadShuffleSerieses();
   }
 
   @override
