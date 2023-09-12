@@ -77,4 +77,10 @@ class xUtils {
     await Navigator.push(
         context, MaterialPageRoute(builder: (context) => child));
   }
+
+  static isPhone(s) {
+    return RegExp(
+            r'^1(3[0-9]|4[579]|5[0-35-9]|6[56]|7[0135678]|8[0-9]|9[89])\d{8}$')
+        .hasMatch(s);
+  }
 }

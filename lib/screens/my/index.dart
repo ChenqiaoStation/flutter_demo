@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/constants/xUtils.dart';
+import 'package:flutter_demo/screens/login/index.dart';
 import 'package:flutter_demo/screens/markdowner/index.dart';
 import 'package:flutter_demo/screens/my-account/index.dart';
 import 'package:flutter_demo/screens/my/widgets/my-profile.dart';
@@ -52,6 +53,10 @@ class MyState extends State<MyPage> {
                 title: '捐赠支持',
                 uri:
                     'https://cdn.cctv3.net/net.cctv3.flutterTruck/docs/about111.md'));
+        break;
+
+      case 'exit':
+        xUtils.useNavigation(context, LoginPage());
         break;
       default:
         break;

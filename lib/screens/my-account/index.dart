@@ -38,14 +38,14 @@ class MyState extends State<MyAccountPage> {
                 actions: [
                   CupertinoDialogAction(
                     child: Text(
-                      '确认删除',
+                      '仍要注销',
                     ),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                   CupertinoDialogAction(
                     isDefaultAction: true,
                     child: Text(
-                      '我点错了',
+                      '还是算了',
                     ),
                     onPressed: () => Navigator.of(context).pop(),
                   )

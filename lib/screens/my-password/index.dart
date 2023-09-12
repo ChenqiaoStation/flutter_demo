@@ -1,29 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/weights/buildTextField.dart';
 import 'package:flutter_demo/weights/simple-card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class PasswordPage extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() => PasswordPageState();
-}
-
-class PasswordPageState extends State<PasswordPage> {
-  TextField buildTextField(prefixText, hintText, onTextChanged) => TextField(
-      onChanged: onTextChanged,
-      autofocus: true,
-      decoration: InputDecoration(
-        hintText: hintText,
-        prefixText: prefixText,
-        hintStyle: TextStyle(fontSize: 16.sp),
-        prefixStyle:
-            TextStyle(color: Theme.of(context).primaryColor, fontSize: 16.sp),
-        isDense: true,
-        contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        border: UnderlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8))),
-        fillColor: Colors.grey[100],
-      ));
-
+class PasswordPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -46,11 +26,11 @@ class PasswordPageState extends State<PasswordPage> {
             children: [
               SimpleCard(
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
-                    buildTextField('旧密码：', '请输入旧密码', (s) {}),
+                    buildTextField(context, '旧密码：', '请输入旧密码', (s) {}),
                     SizedBox(
                       height: 12,
                     ),
-                    buildTextField('新密码：', '请输入新密码', (s) {}),
+                    buildTextField(context, '新密码：', '请输入新密码', (s) {}),
                     SizedBox(
                       height: 24,
                     ),

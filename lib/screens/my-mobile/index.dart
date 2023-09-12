@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/weights/buildTextField.dart';
 import 'package:flutter_demo/weights/simple-card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,22 +15,6 @@ class MobilePage extends StatefulWidget {
 class MobilePageState extends State<MobilePage> {
   int seconds = SECONDS;
   int timerStatus = 0; // ['获取验证码', '${seconds}s', '重新获取']
-
-  TextField buildTextField(prefixText, hintText, onTextChanged) => TextField(
-      onChanged: onTextChanged,
-      autofocus: true,
-      decoration: InputDecoration(
-        hintText: hintText,
-        prefixText: prefixText,
-        hintStyle: TextStyle(fontSize: 16.sp),
-        prefixStyle:
-            TextStyle(color: Theme.of(context).primaryColor, fontSize: 16.sp),
-        isDense: true,
-        contentPadding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-        border: UnderlineInputBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8))),
-        fillColor: Colors.grey[100],
-      ));
 
   @override
   Widget build(BuildContext context) {
@@ -53,14 +38,15 @@ class MobilePageState extends State<MobilePage> {
             children: [
               SimpleCard(
                   child: Column(mainAxisSize: MainAxisSize.min, children: [
-                    buildTextField('手机号：', '请输入换绑后的手机号', (s) {}),
+                    buildTextField(context, '手机号：', '请输入换绑后的手机号', (s) {}),
                     SizedBox(
                       height: 12,
                     ),
                     Row(
                       children: [
                         Flexible(
-                          child: buildTextField('验证码：', '请输入验证码', (s) {}),
+                          child:
+                              buildTextField(context, '验证码：', '请输入验证码', (s) {}),
                         ),
                         SizedBox(
                           height: 32.w,

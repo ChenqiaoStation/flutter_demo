@@ -14,7 +14,7 @@ class SimpleKeyValue {
             SimpleKeyValue(name: '${index + 2010}年', value: '${index + 2010}'));
     return [SimpleKeyValue(name: '2009年及以前', value: '2009'), ...years];
   }
-
+  
   static List<SimpleKeyValue> seriesSorts() {
     return [
       SimpleKeyValue(name: '默认', value: ''),

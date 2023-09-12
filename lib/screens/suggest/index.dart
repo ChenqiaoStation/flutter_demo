@@ -56,6 +56,7 @@ class SuggestPageState extends State<SuggestPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         key: scaffoldKey,
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Text(
             '意见征集',
@@ -121,7 +122,7 @@ class SuggestPageState extends State<SuggestPage> {
                 color: Colors.white,
                 padding: EdgeInsets.only(
                     top: 12,
-                    bottom: MediaQuery.of(context).padding.bottom,
+                    bottom: MediaQuery.of(context).padding.bottom + 12,
                     left: 12,
                     right: 12),
                 child: SizedBox(
