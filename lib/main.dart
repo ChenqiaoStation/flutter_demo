@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/screens/app.dart';
+import 'package:flutter_demo/stores/StatesProvider.dart';
 import 'package:flutter_demo/themes/theme.g.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:bot_toast/bot_toast.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   await ScreenUtil.ensureScreenSize();
   await Hive.initFlutter("./");
-  runApp(HelloFlutter());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider<StatesProvider>(
+        create: (context) => StatesProvider()),
+  ], child: HelloWorld()));
 }
 
-class HelloFlutter extends StatelessWidget {
-  HelloFlutter({super.key});
+class HelloWorld extends StatelessWidget {
+  HelloWorld({super.key});
   final botToastBuilder = BotToastInit();
   // This widget is the root of your application.
   @override
